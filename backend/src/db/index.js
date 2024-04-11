@@ -9,3 +9,7 @@ const DB_CONFIG = {
 };
 
 export const db = mysql.createPool(DB_CONFIG);
+
+export async function comprobarConexion() {
+  return await db.query('SELECT 1');
+}
