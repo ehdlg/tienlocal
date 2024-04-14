@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import UsuarioControlador from '../controladores/Usuario.controlador.js';
+import { crearUsuarioReglas } from '../middlewares/validacion/usuarios.js';
+import { validacion } from '../middlewares/validacion/index.js';
 
 const router = Router();
 
@@ -11,6 +13,6 @@ router.delete('/usuarios/:id', UsuarioControlador.borrar);
 
 router.get('/usuarios', UsuarioControlador.obtenerTodos);
 
-router.post('/usuarios', UsuarioControlador.crear);
+router.post('/usuarios', crearUsuarioReglas, validacion, UsuarioControlador.crear);
 
 export default router;
