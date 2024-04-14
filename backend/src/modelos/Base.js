@@ -75,4 +75,17 @@ export default class Base {
       throw error;
     }
   }
+
+  static async obtenerValor(campo, valor) {
+    const consulta = `SELECT ${campo} FROM ${this.tabla} WHERE ${campo} = ?`;
+
+    try {
+      const [resultado] = await db.execute(consulta, [valor]);
+      console.log(resultado);
+
+      return resultado[0];
+    } catch (error) {
+      throw error;
+    }
+  }
 }
