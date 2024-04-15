@@ -43,6 +43,8 @@ export const crearUsuarioReglas = (() => {
 
 export const actualizarUsuarioReglas = (() => {
   return [
+    param('id').exists().isInt().withMessage('El ID no es correcto, debe ser un entero mayor a 0.'),
+
     body('nombre')
       .optional()
       .isLength({ min: 2, max: 150 })
