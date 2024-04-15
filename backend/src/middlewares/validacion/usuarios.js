@@ -1,6 +1,8 @@
 import { body, param } from 'express-validator';
 import Usuario from '../../modelos/Usuario.js';
 
+const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
+
 async function comprobarEmail(email) {
   try {
     const emailExiste = await Usuario.obtenerValor('email', email);
@@ -31,10 +33,38 @@ export const crearUsuarioReglas = (() => {
       .custom(comprobarEmail),
 
     body('contrasena')
-      .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/)
+      .matches(regexContrasena)
       .withMessage(
         `La contraseña debe contener una minúscula, 
         una mayúscula, un número y mínimo 8 caracteres`
+      ),
+  ];
+})();
+
+export const actualizarUsuarioReglas = (() => {
+  return [
+    body('nombre')
+      .optional()
+      .isLength({ min: 2, max: 150 })
+      .withMessage('El nombre debe tener una longitud de entre 2 y 150 caracteres'),
+
+    body('apellidos')
+      .optional()
+      .isLength({ min: 2, max: 300 })
+      .withMessage('Los apellidos no pueden ocupar más de 300 caracteres'),
+
+    body('email')
+      .optional()
+      .isEmail()
+      .withMessage('El correo introducido no es válido')
+      .custom(comprobarEmail),
+
+    body('contrasena')
+      .optional()
+      .matches(regexContrasena)
+      .withMessage(
+        `La contraseña debe contener una minúscula, 
+      una mayúscula, un número y mínimo 8 caracteres`
       ),
   ];
 })();
