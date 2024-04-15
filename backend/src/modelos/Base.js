@@ -21,7 +21,7 @@ export default class Base {
     try {
       const [fila] = await db.execute(consulta, [id]);
 
-      return fila[0] || {};
+      return fila[0] || null;
     } catch (error) {
       throw error;
     }
