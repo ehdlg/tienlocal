@@ -24,9 +24,7 @@ export default class UsuarioControlador {
   }
 
   static async crear(req, res, next) {
-    const { nombre, apellidos, email, contrasena } = req.body;
-
-    const nuevoUsuario = { nombre, apellidos, email, contrasena };
+    const nuevoUsuario = req.datosValidados;
 
     try {
       const usuarioCreado = await Usuario.crear(nuevoUsuario);
@@ -38,19 +36,17 @@ export default class UsuarioControlador {
   }
 
   static async actualizar(req, res, next) {
-    const { id } = req.params;
+    const { id, ...datosActualizacion } = req.datosValidados;
 
     try {
-      const datosActualizacion = req.datosValidados;
-
       if (Object.keys(datosActualizacion).length === 0) {
         throw new Error('No se han recibido datos para actualizar');
       }
+
       const usuarioActualizado = await Usuario.actualizar(id, datosActualizacion);
 
       return res.json(usuarioActualizado);
     } catch (error) {
-      console.error(error);
       next(error);
     }
   }
