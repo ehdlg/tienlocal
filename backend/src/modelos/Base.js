@@ -81,7 +81,6 @@ export default class Base {
 
     try {
       const [resultado] = await db.execute(consulta, [valor]);
-      console.log(resultado);
 
       return resultado[0];
     } catch (error) {

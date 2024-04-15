@@ -39,7 +39,7 @@ export default class UsuarioControlador {
 
   static async actualizar(req, res, next) {
     const { id } = req.params;
-    const { nombre, apellidos, email, contrasena, wom } = req.body;
+    const { nombre, apellidos, email, contrasena } = req.body;
 
     const nuevosDatos = { nombre, apellidos, email, contrasena };
 
@@ -48,7 +48,6 @@ export default class UsuarioControlador {
 
       return res.json(usuarioActualizado);
     } catch (error) {
-      console.error(error);
       next(error);
     }
   }
@@ -61,7 +60,6 @@ export default class UsuarioControlador {
 
       return res.json(usuarioBorrado);
     } catch (error) {
-      console.error(error);
       next(error);
     }
   }
