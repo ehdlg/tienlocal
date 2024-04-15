@@ -5,7 +5,7 @@ export function noEncontrado(_, res) {
 export function manejadorErrores(error, req, res, next) {
   const estado = error.status || 500;
 
-  const mensaje = error.mensaje || 'Algo salió mal';
+  const mensaje = error.mensaje || error.message || 'Algo salió mal';
 
-  res.status(estado).json({ mensaje });
+  res.status(estado).json({ error: mensaje });
 }
