@@ -39,15 +39,18 @@ export default class UsuarioControlador {
 
   static async actualizar(req, res, next) {
     const { id } = req.params;
-    const { nombre, apellidos, email, contrasena } = req.body;
-
-    const nuevosDatos = { nombre, apellidos, email, contrasena };
 
     try {
-      const usuarioActualizado = await Usuario.actualizar(id, nuevosDatos);
+      const datosActualizacion = req.datosValidados;
+
+      if (Object.keys(datosActualizacion).length === 0) {
+        throw new Error('No se han recibido datos para actualizar');
+      }
+      const usuarioActualizado = await Usuario.actualizar(id, datosActualizacion);
 
       return res.json(usuarioActualizado);
     } catch (error) {
+      console.error(error);
       next(error);
     }
   }
