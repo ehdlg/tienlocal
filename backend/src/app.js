@@ -1,5 +1,6 @@
 import express from 'express';
-import { comprobarConexion } from './db/index.js';
+import rutaApi from './rutas/api.js';
+import { comprobarConexion } from './db/config.js';
 import { manejadorErrores, noEncontrado } from './middlewares/index.js';
 import 'dotenv/config';
 
@@ -20,9 +21,7 @@ async function main() {
 
 app.use(express.json());
 
-app.get('/api', (req, res, next) => {
-  res.json({ mensaje: 'Bienvenido a la API de Tienlocal.' });
-});
+app.use('/api', rutaApi);
 
 app.use(noEncontrado);
 
