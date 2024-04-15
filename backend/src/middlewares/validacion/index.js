@@ -1,9 +1,15 @@
-import { validationResult } from 'express-validator';
+import { matchedData, validationResult } from 'express-validator';
 
 export function validacion(req, res, next) {
   const errores = validationResult(req);
 
-  if (errores.isEmpty()) return next();
+  if (errores.isEmpty()) {
+    const datosValidados = matchedData(req);
+
+    req.datosValidados = datosValidados;
+
+    return next();
+  }
 
   const errorsMessages = errores.array().map((error) => {
     return error.msg;
