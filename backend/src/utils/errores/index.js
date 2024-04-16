@@ -1,6 +1,6 @@
-export class NotFoundError extends Error {
-  constructor(mensaje) {
+export class HTTPError extends Error {
+  constructor({ mensaje, estado }) {
     super(mensaje);
-    this.estado = 404;
+    this.estado = estado;
   }
 }

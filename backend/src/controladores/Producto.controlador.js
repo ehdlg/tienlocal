@@ -1,4 +1,5 @@
 import Producto from '../modelos/Producto.js';
+import { HTTPError } from '../utils/errores/index.js';
 
 export default class UsuarioControlador {
   static async obtenerTodos(req, res, next) {
@@ -16,6 +17,8 @@ export default class UsuarioControlador {
 
     try {
       const producto = await Producto.obtenerUno(id);
+
+      if (null == producto) throw new HTTPError({ mensaje: 'Producto no encontrado', estado: 404 });
 
       return res.json(producto);
     } catch (error) {
@@ -56,6 +59,9 @@ export default class UsuarioControlador {
 
     try {
       const productoBorrado = await Producto.borrar(id);
+
+      if (null == productoBorrado)
+        throw new HTTPError({ mensaje: 'Producto no encontrado', estado: 404 });
 
       return res.json(productoBorrado);
     } catch (error) {

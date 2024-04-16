@@ -1,8 +1,8 @@
 import bcrypt from 'bcrypt';
-import { NotFoundError } from '../utils/errores/index.js';
+import { HTTPError } from '../utils/errores/index.js';
 
 export function noEncontrado() {
-  throw new NotFoundError('Recurso no encontrado');
+  throw new HTTPError({ mensaje: 'Recurso no encontrado', estado: 404 });
 }
 
 export function manejadorErrores(error, req, res, next) {
