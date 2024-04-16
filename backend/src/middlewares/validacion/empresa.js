@@ -13,7 +13,12 @@ export const crearEmpresaReglas = (() => {
       .isLength({ min: 1, max: 100 })
       .withMessage('El nombre de la empresa no puede ocupar más de 100 caracteres'),
 
-    body('email').exists().isEmail().custom(comprobarEmail),
+    body('email')
+      .exists()
+      .withMessage('Introduce un email')
+      .bail()
+      .isEmail()
+      .custom(comprobarEmail),
 
     body('contrasena')
       .exists()
