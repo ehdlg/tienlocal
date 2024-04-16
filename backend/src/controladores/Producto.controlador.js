@@ -1,7 +1,7 @@
 import Producto from '../modelos/Producto.js';
 import { HTTPError } from '../utils/errores/index.js';
 
-export default class UsuarioControlador {
+export default class ProductoControlador {
   static async obtenerTodos(req, res, next) {
     try {
       const productos = await Producto.obtenerTodos();
@@ -43,7 +43,7 @@ export default class UsuarioControlador {
 
     try {
       if (Object.keys(datosActualizacion).length === 0) {
-        throw new Error('No se han recibido datos para actualizar');
+        throw new HTTPError({ mensaje: 'No se han recibido datos para actualizar', estado: 400 });
       }
 
       const productoActualizado = await Producto.actualizar(id, datosActualizacion);
