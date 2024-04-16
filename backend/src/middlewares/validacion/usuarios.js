@@ -1,7 +1,6 @@
 import { body, param } from 'express-validator';
 import { comprobarEmail } from './utils.js';
-
-const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
+import { regexContrasena } from './constants.js';
 
 export const crearUsuarioReglas = (() => {
   return [
