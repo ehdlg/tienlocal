@@ -64,7 +64,7 @@ export const actualizarEmpresaReglas = (() => {
       .isLength({ min: 1, max: 100 })
       .withMessage('El nombre de la empresa no puede ocupar más de 100 caracteres'),
 
-    body('email').exists().isEmail().custom(comprobarEmail),
+    body('email').optional().isEmail().bail().custom(comprobarEmail),
 
     body('contrasena')
       .optional()
@@ -74,12 +74,8 @@ export const actualizarEmpresaReglas = (() => {
         una mayúscula, un número y mínimo 8 caracteres`
       ),
 
-    body('descripcion')
-      .exists()
-      .withMessage('Introduce una descripción para la empresa')
-      .notEmpty()
-      .withMessage('La descripción no puede estar vacía'),
+    body('descripcion').optional().notEmpty().withMessage('La descripción no puede estar vacía'),
 
-    body('ubicacion').exists().withMessage('Introduce una ubicación para la empresa'),
+    body('ubicacion').optional().notEmpty().withMessage('Introduce una ubicación para la empresa'),
   ];
 })();
