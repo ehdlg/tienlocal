@@ -28,14 +28,22 @@ export const crearProductoReglas = (() => {
   return [
     body('nombre')
       .exists()
-      .withMessage('El nombre de producto es obligatorio')
+      .withMessage('Introduce el nombre del producto')
       .isLength({ min: 1, max: 100 })
       .withMessage('El nombre de producto no debe ser mayor a 100 caracteres.'),
     body('descripcion').optional(),
 
-    body('precio').isFloat({ min: 0.01 }).withMessage('El precio debe ser mayor a 0'),
+    body('precio')
+      .exists()
+      .withMessage('Introduce el precio del producto')
+      .isFloat({ min: 0.01 })
+      .withMessage('El precio debe ser mayor a 0'),
 
-    body('stock').isInt({ min: 0 }).withMessage('El stock debe ser mayor o igual a 0'),
+    body('stock')
+      .exists()
+      .withMessage('Introduce el stock del producto')
+      .isInt({ min: 0 })
+      .withMessage('El stock debe ser mayor o igual a 0'),
 
     body('imagen').optional().isURL().withMessage('La imagen debe ser una URL'),
 
@@ -51,6 +59,31 @@ export const crearProductoReglas = (() => {
       .exists()
       .withMessage('Debes indicar el ID de la categoría')
       .bail()
+      .isInt({ min: 1 })
+      .withMessage('ID de categoría no válido')
+      .custom(existeCategoria),
+  ];
+})();
+
+export const actualizarProductoReglas = (() => {
+  return [
+    param('id').exists().isInt().withMessage('El ID de producto introducido no es válido'),
+
+    body('nombre')
+      .optional()
+      .isLength({ min: 1, max: 100 })
+      .withMessage('El nombre de producto no debe ser mayor a 100 caracteres.'),
+
+    body('descripcion').optional(),
+
+    body('precio').optional().isFloat({ min: 0.01 }).withMessage('El precio debe ser mayor a 0'),
+
+    body('stock').optional().isInt({ min: 0 }).withMessage('El stock debe ser mayor o igual a 0'),
+
+    body('imagen').optional().isURL().withMessage('La imagen debe ser una URL'),
+
+    body('categoria_id')
+      .optional()
       .isInt({ min: 1 })
       .withMessage('ID de categoría no válido')
       .custom(existeCategoria),
