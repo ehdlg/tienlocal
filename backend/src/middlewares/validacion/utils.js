@@ -14,3 +14,13 @@ export async function comprobarEmail(email) {
     throw error;
   }
 }
+
+export async function comprobarNombreEmpresa(nombre) {
+  try {
+    const nombreEmpresa = await Empresa.obtenerValor('nombre', nombre);
+
+    if (null != nombreEmpresa) throw new Error('El nombre de la empresa ya está registrado');
+  } catch (error) {
+    throw error;
+  }
+}

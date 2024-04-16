@@ -1,5 +1,5 @@
 import { body, param } from 'express-validator';
-import { comprobarEmail } from './utils.js';
+import { comprobarEmail, comprobarNombreEmpresa } from './utils.js';
 import { regexContrasena } from './constants.js';
 
 export const crearEmpresaReglas = (() => {
@@ -11,7 +11,8 @@ export const crearEmpresaReglas = (() => {
       .notEmpty()
       .withMessage('El nombre de la empresa no puede estar vacío')
       .isLength({ min: 1, max: 100 })
-      .withMessage('El nombre de la empresa no puede ocupar más de 100 caracteres'),
+      .withMessage('El nombre de la empresa no puede ocupar más de 100 caracteres')
+      .custom(comprobarNombreEmpresa),
 
     body('email')
       .exists()
