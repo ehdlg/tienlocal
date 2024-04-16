@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { crearEmpresaReglas, actualizarEmpresaReglas } from '../middlewares/validacion/empresa';
-import EmpresaControlador from '../controladores/Empresa.controlador';
-import { validacion } from '../middlewares/validacion';
+import { crearEmpresaReglas, actualizarEmpresaReglas } from '../middlewares/validacion/empresa.js';
+import EmpresaControlador from '../controladores/Empresa.controlador.js';
+import { validacion } from '../middlewares/validacion/index.js';
 
 const router = Router();
 
