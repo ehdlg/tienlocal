@@ -1,17 +1,7 @@
 import { body, param } from 'express-validator';
-import Usuario from '../../modelos/Usuario.js';
+import { comprobarEmail } from './utils.js';
 
 const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
-
-async function comprobarEmail(email) {
-  try {
-    const emailExiste = await Usuario.obtenerValor('email', email);
-
-    if (null != emailExiste) throw new Error('El email ya existe.');
-  } catch (error) {
-    throw error;
-  }
-}
 
 export const crearUsuarioReglas = (() => {
   return [
