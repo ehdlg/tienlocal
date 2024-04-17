@@ -1,6 +1,6 @@
 import { body, param } from 'express-validator';
 import { comprobarEmail, comprobarNombreEmpresa } from './utils.js';
-import { regexContrasena } from './constants.js';
+import { regexContrasena } from './constantes.js';
 
 export const crearEmpresaReglas = (() => {
   return [
