@@ -1,4 +1,5 @@
 import Usuario from '../modelos/Usuario.js';
+import { HTTPError } from '../utils/errores/index.js';
 
 export default class UsuarioControlador {
   static async obtenerTodos(req, res, next) {
@@ -16,6 +17,8 @@ export default class UsuarioControlador {
 
     try {
       const usuario = await Usuario.obtenerUno(id);
+
+      if (null == usuario) throw new HTTPError({ mensaje: 'Usuario no encontrado', estado: 404 });
 
       return res.json(usuario);
     } catch (error) {
@@ -56,6 +59,9 @@ export default class UsuarioControlador {
 
     try {
       const usuarioBorrado = await Usuario.borrar(id);
+
+      if (null == usuarioBorrado)
+        throw new HTTPError({ mensaje: 'Usuario no encontrado', estado: 404 });
 
       return res.json(usuarioBorrado);
     } catch (error) {

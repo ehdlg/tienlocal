@@ -20,6 +20,7 @@ export default class ValoracionControlador {
 
       if (null == valoracion)
         throw new HTTPError({ mensaje: 'Valoración no encontrada', estado: 404 });
+
       return res.json(valoracion);
     } catch (error) {
       next(error);
