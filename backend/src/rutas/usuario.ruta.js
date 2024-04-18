@@ -3,10 +3,11 @@ import UsuarioControlador from '../controladores/Usuario.controlador.js';
 import { generarHashedPassword } from '../middlewares/index.js';
 import { crearUsuarioReglas, actualizarUsuarioReglas } from '../middlewares/validacion/usuarios.js';
 import { validacion } from '../middlewares/validacion/index.js';
+import { comprobrarPermisosAdministrador } from '../middlewares/auth/index.js';
 
 const router = Router();
 
-router.get('/usuarios/:id', UsuarioControlador.obtenerUno);
+router.get('/usuarios/:id', comprobrarPermisosAdministrador, UsuarioControlador.obtenerUno);
 
 router.patch(
   '/usuarios/:id',
@@ -18,7 +19,7 @@ router.patch(
 
 router.delete('/usuarios/:id', UsuarioControlador.borrar);
 
-router.get('/usuarios', UsuarioControlador.obtenerTodos);
+router.get('/usuarios', comprobrarPermisosAdministrador, UsuarioControlador.obtenerTodos);
 
 router.post(
   '/usuarios',
