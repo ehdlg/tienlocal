@@ -2,12 +2,13 @@ import { db } from '../db/config.js';
 
 export default class Base {
   static tabla = null;
+  static db = db;
 
   static async obtenerTodos() {
     const consulta = `SELECT * FROM ${this.tabla}`;
 
     try {
-      const [filas] = await db.query(consulta);
+      const [filas] = await this.db.query(consulta);
 
       return filas;
     } catch (error) {
@@ -19,7 +20,7 @@ export default class Base {
     const consulta = `SELECT * FROM ${this.tabla} WHERE id = ?`;
 
     try {
-      const [fila] = await db.execute(consulta, [id]);
+      const [fila] = await this.db.execute(consulta, [id]);
 
       return fila[0] || null;
     } catch (error) {
@@ -31,7 +32,7 @@ export default class Base {
     const consulta = `INSERT INTO ${this.tabla} SET ? ;`;
 
     try {
-      const [fila] = await db.query(consulta, [nuevoRegistro]);
+      const [fila] = await this.db.query(consulta, [nuevoRegistro]);
 
       fila.info =
         fila.affectedRows === 1 ? 'Registro creado correctamente' : 'No se pudo crear el registro';
@@ -46,7 +47,7 @@ export default class Base {
     const consulta = `UPDATE ${this.tabla} SET ? WHERE id = ?;`;
 
     try {
-      const [fila] = await db.query(consulta, [datos, id]);
+      const [fila] = await this.db.query(consulta, [datos, id]);
 
       fila.info =
         fila.affectedRows === 1
@@ -63,7 +64,7 @@ export default class Base {
     const consulta = `DELETE FROM ${this.tabla} WHERE id = ?;`;
 
     try {
-      const [fila] = await db.execute(consulta, [id]);
+      const [fila] = await this.db.execute(consulta, [id]);
 
       fila.info =
         fila.affectedRows === 1
@@ -80,7 +81,7 @@ export default class Base {
     const consulta = `SELECT ${campo} FROM ${this.tabla} WHERE ${campo} = ?`;
 
     try {
-      const [resultado] = await db.execute(consulta, [valor]);
+      const [resultado] = await this.db.execute(consulta, [valor]);
 
       return resultado[0];
     } catch (error) {
