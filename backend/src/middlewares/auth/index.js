@@ -1,14 +1,23 @@
+import Administrador from '../../modelos/Administrador.js';
 import { HTTPError } from '../../utils/errores/index.js';
-import 'dotenv/config';
+import bcrypt from 'bcrypt';
 
 export async function comprobrarPermisosAdministrador(req, res, next) {
-  const { ADMIN_EMAIL, ADMIN_PWD } = process.env;
   const { email, contrasena } = req.body;
 
   try {
-    if (email === ADMIN_EMAIL && contrasena === ADMIN_PWD) return next();
+    const admin = await Administrador.obtenerUno(1);
 
-    throw new HTTPError({ mensaje: 'No tienes los permisos para acceder', estado: 403 });
+    const administradorValido =
+      null != admin &&
+      null != admin.email &&
+      null != admin.contrasena &&
+      email === admin.email &&
+      (await bcrypt.compare(contrasena, admin.contrasena));
+
+    if (administradorValido) return next();
+
+    throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
   } catch (error) {
     next(error);
   }
