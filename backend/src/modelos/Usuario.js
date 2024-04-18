@@ -1,5 +1,5 @@
-import Base from './Base.js';
+import Login from './Login.js';
 
-export default class Usuario extends Base {
+export default class Usuario extends Login {
   static tabla = 'usuarios';
 }
