@@ -42,6 +42,12 @@ export async function comprobarUsuarioCredenciales(req, res, next) {
     if (!credencialesCorrectas)
       throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
 
+    req.login = {
+      id: usuario.id,
+      email: usuario.email,
+      rol: 'usuario',
+    };
+
     return next();
   } catch (error) {
     next(error);
@@ -65,8 +71,18 @@ export async function comprobarEmpresaCredenciales(req, res, next) {
     if (!credencialesCorrectas)
       throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
 
+    req.login = {
+      id: empresa.id,
+      email: empresa.email,
+      rol: 'empresa',
+    };
+
     return next();
   } catch (error) {
     next(error);
   }
+}
+
+export async function crearToken(req, res, next) {
+  return res.json(req.login);
 }
