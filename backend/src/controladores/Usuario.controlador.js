@@ -71,25 +71,6 @@ export default class UsuarioControlador {
   }
 
   static async loginUsuario(req, res, next) {
-    try {
-      const { email, contrasena } = req.datosValidados;
-
-      if (null == email || null == contrasena)
-        throw new HTTPError({ mensaje: 'Error al leer los datos proporcionados', estado: 400 });
-
-      const [usuario] = await Usuario.obtenerPorCredenciales(email);
-
-      const credencialesCorrectas =
-        null != usuario &&
-        usuario.email === email &&
-        (await bcrypt.compare(contrasena, usuario.contrasena));
-
-      if (!credencialesCorrectas)
-        throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
-
-      return res.json({ datos: usuario });
-    } catch (error) {
-      next(error);
-    }
+    //TODO implement jwt logic
   }
 }
