@@ -1,3 +1,4 @@
+import { crearToken } from '../middlewares/auth/index.js';
 import Empresa from '../modelos/Empresa.js';
 import { HTTPError } from '../utils/errores/index.js';
 
@@ -68,4 +69,6 @@ export default class EmpresaControlador {
       next(error);
     }
   }
+
+  static login = crearToken;
 }

@@ -1,5 +1,5 @@
 import Usuario from '../modelos/Usuario.js';
-import bcrypt from 'bcrypt';
+import { crearToken } from '../middlewares/auth/index.js';
 import { HTTPError } from '../utils/errores/index.js';
 
 export default class UsuarioControlador {
@@ -70,7 +70,5 @@ export default class UsuarioControlador {
     }
   }
 
-  static async loginUsuario(req, res, next) {
-    //TODO implement jwt logic
-  }
+  static login = crearToken;
 }

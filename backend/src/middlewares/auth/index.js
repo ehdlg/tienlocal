@@ -1,8 +1,9 @@
 import Administrador from '../../modelos/Administrador.js';
 import Usuario from '../../modelos/Usuario.js';
 import Empresa from '../../modelos/Empresa.js';
-import { HTTPError } from '../../utils/errores/index.js';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { HTTPError } from '../../utils/errores/index.js';
 
 export async function comprobrarPermisosAdministrador(req, res, next) {
   const { email, contrasena } = req.body;
@@ -84,5 +85,14 @@ export async function comprobarEmpresaCredenciales(req, res, next) {
 }
 
 export async function crearToken(req, res, next) {
-  return res.json(req.login);
+  try {
+    const { login } = req;
+    const { SECRET } = process.env;
+
+    const token = jwt.sign(login, SECRET);
+
+    return res.json({ token });
+  } catch (error) {
+    throw error;
+  }
 }
