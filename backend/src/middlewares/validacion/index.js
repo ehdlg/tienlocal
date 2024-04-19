@@ -1,4 +1,4 @@
-import { matchedData, validationResult } from 'express-validator';
+import { matchedData, validationResult, body } from 'express-validator';
 
 export function validacion(req, res, next) {
   const errores = validationResult(req);
@@ -17,3 +17,16 @@ export function validacion(req, res, next) {
 
   return res.status(422).json({ errores: errorsMessages });
 }
+
+export const loginReglas = (() => {
+  return [
+    body('email')
+      .exists()
+      .withMessage('Debes introducir un email')
+      .bail()
+      .isEmail()
+      .withMessage('El email introducido no es válido'),
+
+    body('contrasena').exists().withMessage('Debes introducir una contraseña'),
+  ];
+})();

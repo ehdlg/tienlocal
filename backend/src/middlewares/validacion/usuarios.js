@@ -59,16 +59,3 @@ export const actualizarUsuarioReglas = (() => {
       ),
   ];
 })();
-
-export const loginUsuarioReglas = (() => {
-  return [
-    body('email')
-      .exists()
-      .withMessage('Debes introducir un email')
-      .bail()
-      .isEmail()
-      .withMessage('El email introducido no es válido'),
-
-    body('contrasena').exists().withMessage('Debes introducir una contraseña'),
-  ];
-})();
