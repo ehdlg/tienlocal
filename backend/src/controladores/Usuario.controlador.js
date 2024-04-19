@@ -1,4 +1,5 @@
 import Usuario from '../modelos/Usuario.js';
+import bcrypt from 'bcrypt';
 import { HTTPError } from '../utils/errores/index.js';
 
 export default class UsuarioControlador {
@@ -64,6 +65,29 @@ export default class UsuarioControlador {
         throw new HTTPError({ mensaje: 'Usuario no encontrado', estado: 404 });
 
       return res.json(usuarioBorrado);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async loginUsuario(req, res, next) {
+    try {
+      const { email, contrasena } = req.datosValidados;
+
+      if (null == email || null == contrasena)
+        throw new HTTPError({ mensaje: 'Error al leer los datos proporcionados', estado: 400 });
+
+      const [usuario] = await Usuario.obtenerPorCredenciales(email);
+
+      const credencialesCorrectas =
+        null != usuario &&
+        usuario.email === email &&
+        (await bcrypt.compare(contrasena, usuario.contrasena));
+
+      if (!credencialesCorrectas)
+        throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
+
+      return res.json({ datos: usuario });
     } catch (error) {
       next(error);
     }
