@@ -2,8 +2,11 @@ import { Router } from 'express';
 import UsuarioControlador from '../controladores/Usuario.controlador.js';
 import { generarHashedPassword } from '../middlewares/index.js';
 import { crearUsuarioReglas, actualizarUsuarioReglas } from '../middlewares/validacion/usuarios.js';
-import { validacion } from '../middlewares/validacion/index.js';
-import { comprobrarPermisosAdministrador } from '../middlewares/auth/index.js';
+import { loginReglas, validacion } from '../middlewares/validacion/index.js';
+import {
+  comprobarUsuarioCredenciales,
+  comprobrarPermisosAdministrador,
+} from '../middlewares/auth/index.js';
 
 const router = Router();
 
@@ -27,6 +30,14 @@ router.post(
   validacion,
   generarHashedPassword,
   UsuarioControlador.crear
+);
+
+router.post(
+  '/usuarios/login',
+  loginReglas,
+  validacion,
+  comprobarUsuarioCredenciales,
+  UsuarioControlador.login
 );
 
 export default router;

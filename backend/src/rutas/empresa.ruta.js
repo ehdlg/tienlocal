@@ -1,9 +1,12 @@
 import { Router } from 'express';
 import { crearEmpresaReglas, actualizarEmpresaReglas } from '../middlewares/validacion/empresa.js';
 import EmpresaControlador from '../controladores/Empresa.controlador.js';
-import { validacion } from '../middlewares/validacion/index.js';
+import { loginReglas, validacion } from '../middlewares/validacion/index.js';
 import { generarHashedPassword } from '../middlewares/index.js';
-import { comprobrarPermisosAdministrador } from '../middlewares/auth/index.js';
+import {
+  comprobarEmpresaCredenciales,
+  comprobrarPermisosAdministrador,
+} from '../middlewares/auth/index.js';
 
 const router = Router();
 
@@ -27,6 +30,14 @@ router.post(
   validacion,
   generarHashedPassword,
   EmpresaControlador.crear
+);
+
+router.post(
+  '/empresas/login',
+  loginReglas,
+  validacion,
+  comprobarEmpresaCredenciales,
+  EmpresaControlador.login
 );
 
 export default router;
