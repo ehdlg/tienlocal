@@ -47,3 +47,26 @@ export async function comprobarUsuarioCredenciales(req, res, next) {
     next(error);
   }
 }
+
+export async function comprobarEmpresaCredenciales(req, res, next) {
+  try {
+    const { email, contrasena } = req.datosValidados;
+
+    if (null == email || null == contrasena)
+      throw new HTTPError({ mensaje: 'Error al leer los datos proporcionados', estado: 400 });
+
+    const [empresa] = await Empresa.obtenerPorCredenciales(email);
+
+    const credencialesCorrectas =
+      null != empresa &&
+      empresa.email === email &&
+      (await bcrypt.compare(contrasena, empresa.contrasena));
+
+    if (!credencialesCorrectas)
+      throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
+
+    return next();
+  } catch (error) {
+    next(error);
+  }
+}
