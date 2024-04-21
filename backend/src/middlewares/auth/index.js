@@ -93,6 +93,24 @@ export async function crearToken(req, res, next) {
 
     return res.json({ token });
   } catch (error) {
-    throw error;
+    next(error);
+  }
+}
+
+export async function verificarToken(req, res, next) {
+  try {
+    const { SECRET } = process.env;
+    const [bearer, token] = req.headers['authorization'].split(' ');
+
+    if (bearer !== 'Bearer' || null == token)
+      throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 403 });
+
+    const verifiedToken = jwt.verify(token, SECRET);
+
+    req.verifiedToken = verifiedToken;
+
+    next();
+  } catch (error) {
+    next(error);
   }
 }
