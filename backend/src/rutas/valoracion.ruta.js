@@ -3,8 +3,8 @@ import ValoracionControlador from '../controladores/Valoracion.controlador.js';
 
 const router = Router();
 
-router.get('/valoraciones/:id', ValoracionControlador.obtenerUno);
+router.get('/:id', ValoracionControlador.obtenerUno);
 
-router.get('/valoraciones', ValoracionControlador.obtenerTodos);
+router.get('/', ValoracionControlador.obtenerTodos);
 
 export default router;

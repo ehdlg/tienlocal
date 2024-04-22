@@ -12,15 +12,10 @@ import {
 
 const router = Router();
 
-router.get(
-  '/empresas/:id',
-  verificarToken,
-  comprobarPermisosEmpresa,
-  EmpresaControlador.obtenerUno
-);
+router.get('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.obtenerUno);
 
 router.patch(
-  '/empresas/:id',
+  '/:id',
   verificarToken,
   comprobarPermisosEmpresa,
   actualizarEmpresaReglas,
@@ -29,25 +24,14 @@ router.patch(
   EmpresaControlador.actualizar
 );
 
-router.delete('/empresas/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.borrar);
+router.delete('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.borrar);
 
-router.get(
-  '/empresas',
-  verificarToken,
-  comprobarPermisosAdministrador,
-  EmpresaControlador.obtenerTodos
-);
+router.get('/', verificarToken, comprobarPermisosAdministrador, EmpresaControlador.obtenerTodos);
+
+router.post('/', crearEmpresaReglas, validacion, generarHashedPassword, EmpresaControlador.crear);
 
 router.post(
-  '/empresas',
-  crearEmpresaReglas,
-  validacion,
-  generarHashedPassword,
-  EmpresaControlador.crear
-);
-
-router.post(
-  '/empresas/login',
+  '/login',
   loginReglas,
   validacion,
   comprobarEmpresaCredenciales,

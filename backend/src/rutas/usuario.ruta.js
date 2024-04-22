@@ -12,15 +12,10 @@ import {
 
 const router = Router();
 
-router.get(
-  '/usuarios/:id',
-  verificarToken,
-  comprobarPermisosUsuario,
-  UsuarioControlador.obtenerUno
-);
+router.get('/:id', verificarToken, comprobarPermisosUsuario, UsuarioControlador.obtenerUno);
 
 router.patch(
-  '/usuarios/:id',
+  '/:id',
   verificarToken,
   comprobarPermisosUsuario,
   actualizarUsuarioReglas,
@@ -29,25 +24,14 @@ router.patch(
   UsuarioControlador.actualizar
 );
 
-router.delete('/usuarios/:id', verificarToken, comprobarPermisosUsuario, UsuarioControlador.borrar);
+router.delete('/:id', verificarToken, comprobarPermisosUsuario, UsuarioControlador.borrar);
 
-router.get(
-  '/usuarios',
-  verificarToken,
-  comprobarPermisosAdministrador,
-  UsuarioControlador.obtenerTodos
-);
+router.get('/', verificarToken, comprobarPermisosAdministrador, UsuarioControlador.obtenerTodos);
+
+router.post('/', crearUsuarioReglas, validacion, generarHashedPassword, UsuarioControlador.crear);
 
 router.post(
-  '/usuarios',
-  crearUsuarioReglas,
-  validacion,
-  generarHashedPassword,
-  UsuarioControlador.crear
-);
-
-router.post(
-  '/usuarios/login',
+  '/login',
   loginReglas,
   validacion,
   comprobarUsuarioCredenciales,

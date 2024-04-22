@@ -3,8 +3,8 @@ import CategoriaControlador from '../controladores/Categoria.controlador.js';
 
 const router = Router();
 
-router.get('/categorias/:id', CategoriaControlador.obtenerUno);
+router.get('/:id', CategoriaControlador.obtenerUno);
 
-router.get('/categorias', CategoriaControlador.obtenerTodos);
+router.get('/', CategoriaControlador.obtenerTodos);
 
 export default router;

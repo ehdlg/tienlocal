@@ -8,19 +8,14 @@ import { validacion } from '../middlewares/validacion/index.js';
 
 const router = Router();
 
-router.get('/productos/:id', ProductoControlador.obtenerUno);
+router.get(':id', ProductoControlador.obtenerUno);
 
-router.patch(
-  '/productos/:id',
-  actualizarProductoReglas,
-  validacion,
-  ProductoControlador.actualizar
-);
+router.patch(':id', actualizarProductoReglas, validacion, ProductoControlador.actualizar);
 
-router.delete('/productos/:id', ProductoControlador.borrar);
+router.delete('/:id', ProductoControlador.borrar);
 
-router.get('/productos', ProductoControlador.obtenerTodos);
+router.get('/', ProductoControlador.obtenerTodos);
 
-router.post('/productos', crearProductoReglas, validacion, ProductoControlador.crear);
+router.post('/', crearProductoReglas, validacion, ProductoControlador.crear);
 
 export default router;

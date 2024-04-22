@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import rutaUsuarios from './usuario.ruta.js';
 import rutaProductos from './producto.ruta.js';
-import rutaEmpresa from './empresa.ruta.js';
-import rutaCategoria from './categoria.ruta.js';
-import rutaValoracion from './valoracion.ruta.js';
+import rutaEmpresas from './empresa.ruta.js';
+import rutaCategorias from './categoria.ruta.js';
+import rutaValoraciones from './valoracion.ruta.js';
 import rutaAdministrador from './administrador.ruta.js';
 
 const router = Router();
@@ -12,15 +12,15 @@ router.get('/', (req, res, next) => {
   res.json({ mensaje: 'Bienvenido a la API de Tienlocal' });
 });
 
-router.use(rutaProductos);
+router.use('/productos/', rutaProductos);
 
-router.use(rutaUsuarios);
+router.use('/usuarios/', rutaUsuarios);
 
-router.use(rutaEmpresa);
+router.use('/empresas/', rutaEmpresas);
 
-router.use(rutaCategoria);
+router.use('/categorias/', rutaCategorias);
 
-router.use(rutaValoracion);
+router.use('/valoraciones/', rutaValoraciones);
 
 router.use('/administrador/', rutaAdministrador);
 
