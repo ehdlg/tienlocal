@@ -103,13 +103,43 @@ export async function verificarToken(req, res, next) {
     const [bearer, token] = req.headers['authorization'].split(' ');
 
     if (bearer !== 'Bearer' || null == token)
-      throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 403 });
+      throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
 
-    const verifiedToken = jwt.verify(token, SECRET);
+    const tokenVerificado = jwt.verify(token, SECRET);
 
-    req.verifiedToken = verifiedToken;
+    req.tokenVerificado = tokenVerificado;
 
     next();
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function comprobarPermisosUsuario(req, res, next) {
+  try {
+    const { tokenVerificado } = req;
+    const id = Number(req.params.id);
+
+    if (tokenVerificado.id != id || tokenVerificado.rol !== 'usuario') {
+      throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
+    }
+
+    return next();
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function comprobarPermisosEmpresa(req, res, next) {
+  try {
+    const { tokenVerificado } = req;
+    const id = Number(req.params.id);
+
+    if (tokenVerificado.id != id || tokenVerificado.rol !== 'empresa') {
+      throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
+    }
+
+    return next();
   } catch (error) {
     next(error);
   }
