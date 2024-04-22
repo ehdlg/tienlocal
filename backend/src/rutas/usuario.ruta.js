@@ -4,25 +4,39 @@ import { generarHashedPassword } from '../middlewares/index.js';
 import { crearUsuarioReglas, actualizarUsuarioReglas } from '../middlewares/validacion/usuarios.js';
 import { loginReglas, validacion } from '../middlewares/validacion/index.js';
 import {
+  comprobarPermisosUsuario,
   comprobarUsuarioCredenciales,
-  comprobrarPermisosAdministrador,
+  verificarToken,
+  comprobarPermisosAdministrador,
 } from '../middlewares/auth/index.js';
 
 const router = Router();
 
-router.get('/usuarios/:id', comprobrarPermisosAdministrador, UsuarioControlador.obtenerUno);
+router.get(
+  '/usuarios/:id',
+  verificarToken,
+  comprobarPermisosUsuario,
+  UsuarioControlador.obtenerUno
+);
 
 router.patch(
   '/usuarios/:id',
+  verificarToken,
+  comprobarPermisosUsuario,
   actualizarUsuarioReglas,
   validacion,
   generarHashedPassword,
   UsuarioControlador.actualizar
 );
 
-router.delete('/usuarios/:id', UsuarioControlador.borrar);
+router.delete('/usuarios/:id', verificarToken, comprobarPermisosUsuario, UsuarioControlador.borrar);
 
-router.get('/usuarios', comprobrarPermisosAdministrador, UsuarioControlador.obtenerTodos);
+router.get(
+  '/usuarios',
+  verificarToken,
+  comprobarPermisosAdministrador,
+  UsuarioControlador.obtenerTodos
+);
 
 router.post(
   '/usuarios',

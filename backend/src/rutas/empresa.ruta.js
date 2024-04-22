@@ -5,24 +5,38 @@ import { loginReglas, validacion } from '../middlewares/validacion/index.js';
 import { generarHashedPassword } from '../middlewares/index.js';
 import {
   comprobarEmpresaCredenciales,
-  comprobrarPermisosAdministrador,
+  comprobarPermisosAdministrador,
+  comprobarPermisosEmpresa,
+  verificarToken,
 } from '../middlewares/auth/index.js';
 
 const router = Router();
 
-router.get('/empresas/:id', comprobrarPermisosAdministrador, EmpresaControlador.obtenerUno);
+router.get(
+  '/empresas/:id',
+  verificarToken,
+  comprobarPermisosEmpresa,
+  EmpresaControlador.obtenerUno
+);
 
 router.patch(
   '/empresas/:id',
+  verificarToken,
+  comprobarPermisosEmpresa,
   actualizarEmpresaReglas,
   validacion,
   generarHashedPassword,
   EmpresaControlador.actualizar
 );
 
-router.delete('/empresas/:id', EmpresaControlador.borrar);
+router.delete('/empresas/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.borrar);
 
-router.get('/empresas', comprobrarPermisosAdministrador, EmpresaControlador.obtenerTodos);
+router.get(
+  '/empresas',
+  verificarToken,
+  comprobarPermisosAdministrador,
+  EmpresaControlador.obtenerTodos
+);
 
 router.post(
   '/empresas',
