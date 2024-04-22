@@ -5,8 +5,8 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { HTTPError } from '../../utils/errores/index.js';
 
-export async function comprobrarPermisosAdministrador(req, res, next) {
-  const { email, contrasena } = req.body;
+export async function comprobarAdministradorCredenciales(req, res, next) {
+  const { email, contrasena } = req.datosValidados;
 
   try {
     const admin = await Administrador.obtenerUno(1);
@@ -18,9 +18,17 @@ export async function comprobrarPermisosAdministrador(req, res, next) {
       email === admin.email &&
       (await bcrypt.compare(contrasena, admin.contrasena));
 
-    if (administradorValido) return next();
+    if (!administradorValido) {
+      throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
+    }
 
-    throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
+    req.login = {
+      id: admin.id,
+      email: admin.email,
+      rol: 'admin',
+    };
+
+    return next();
   } catch (error) {
     next(error);
   }
@@ -99,6 +107,9 @@ export async function crearToken(req, res, next) {
 
 export async function verificarToken(req, res, next) {
   try {
+    if (null == req.headers['authorization'])
+      throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
+
     const { SECRET } = process.env;
     const [bearer, token] = req.headers['authorization'].split(' ');
 
@@ -110,6 +121,20 @@ export async function verificarToken(req, res, next) {
     req.tokenVerificado = tokenVerificado;
 
     next();
+  } catch (error) {
+    next(error);
+  }
+}
+
+export async function comprobarPermisosAdministrador(req, res, next) {
+  try {
+    const { tokenVerificado } = req;
+
+    if (tokenVerificado.rol !== 'admin') {
+      throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
+    }
+
+    return next();
   } catch (error) {
     next(error);
   }
