@@ -92,7 +92,7 @@ export async function comprobarEmpresaCredenciales(req, res, next) {
   }
 }
 
-export async function crearToken(req, res, next) {
+export function crearToken(req, res, next) {
   try {
     const { login } = req;
     const { SECRET } = process.env;
@@ -105,7 +105,7 @@ export async function crearToken(req, res, next) {
   }
 }
 
-export async function verificarToken(req, res, next) {
+export function verificarToken(req, res, next) {
   try {
     if (null == req.headers['authorization'])
       throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
@@ -126,7 +126,7 @@ export async function verificarToken(req, res, next) {
   }
 }
 
-export async function comprobarPermisosAdministrador(req, res, next) {
+export function comprobarPermisosAdministrador(req, res, next) {
   try {
     const { tokenVerificado } = req;
 
@@ -140,7 +140,7 @@ export async function comprobarPermisosAdministrador(req, res, next) {
   }
 }
 
-export async function comprobarPermisosUsuario(req, res, next) {
+export function comprobarPermisosUsuario(req, res, next) {
   try {
     const { tokenVerificado } = req;
 
@@ -158,7 +158,7 @@ export async function comprobarPermisosUsuario(req, res, next) {
   }
 }
 
-export async function comprobarPermisosEmpresa(req, res, next) {
+export function comprobarPermisosEmpresa(req, res, next) {
   try {
     const { tokenVerificado } = req;
 
