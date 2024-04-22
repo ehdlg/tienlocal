@@ -143,6 +143,9 @@ export async function comprobarPermisosAdministrador(req, res, next) {
 export async function comprobarPermisosUsuario(req, res, next) {
   try {
     const { tokenVerificado } = req;
+
+    if (tokenVerificado.rol == 'admin') return next();
+
     const id = Number(req.params.id);
 
     if (tokenVerificado.id != id || tokenVerificado.rol !== 'usuario') {
@@ -158,6 +161,9 @@ export async function comprobarPermisosUsuario(req, res, next) {
 export async function comprobarPermisosEmpresa(req, res, next) {
   try {
     const { tokenVerificado } = req;
+
+    if (tokenVerificado.rol == 'admin') return next();
+
     const id = Number(req.params.id);
 
     if (tokenVerificado.id != id || tokenVerificado.rol !== 'empresa') {
