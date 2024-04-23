@@ -1,9 +1,21 @@
-import { useEffect, useState } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Root from './Root';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    //TODO make error Component
+    errorElement: <>404 Not found</>,
+    //TODO add all the components to their respective routes
+    children: [],
+  },
+]);
 
 function App() {
   return (
     <>
-      <h1>Tienlocal</h1>
+      <RouterProvider router={router} />
     </>
   );
 }
