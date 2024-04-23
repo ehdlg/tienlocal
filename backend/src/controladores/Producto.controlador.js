@@ -4,7 +4,9 @@ import { HTTPError } from '../utils/errores/index.js';
 export default class ProductoControlador {
   static async obtenerTodos(req, res, next) {
     try {
-      const productos = await Producto.obtenerTodos();
+      const { limite, offset } = req.query;
+
+      const productos = await Producto.obtenerTodos(limite, offset);
 
       return res.json(productos);
     } catch (error) {

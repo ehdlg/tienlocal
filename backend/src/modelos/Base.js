@@ -13,13 +13,12 @@ export default class Base {
       parametros.push(limite);
     }
 
-    if (null != offset && typeof offset == 'number') {
+    if (null != offset && !isNaN(offset)) {
       consulta += ' OFFSET ?';
       parametros.push(offset);
     }
 
-    console.log(limite, offset);
-    console.log(consulta);
+    console.log({ limite, offset, consulta });
     try {
       const [filas] = await this.db.execute(consulta, parametros);
 
