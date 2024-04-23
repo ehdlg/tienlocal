@@ -4,11 +4,24 @@ export default class Base {
   static tabla = null;
   static db = db;
 
-  static async obtenerTodos() {
-    const consulta = `SELECT * FROM ${this.tabla}`;
+  static async obtenerTodos(limite = null, offset = null) {
+    let consulta = `SELECT * FROM ${this.tabla}`;
+    const parametros = [];
 
+    if (null != limite && !isNaN(limite)) {
+      consulta += ' LIMIT ?';
+      parametros.push(limite);
+    }
+
+    if (null != offset && typeof offset == 'number') {
+      consulta += ' OFFSET ?';
+      parametros.push(offset);
+    }
+
+    console.log(limite, offset);
+    console.log(consulta);
     try {
-      const [filas] = await this.db.query(consulta);
+      const [filas] = await this.db.execute(consulta, parametros);
 
       return filas;
     } catch (error) {
