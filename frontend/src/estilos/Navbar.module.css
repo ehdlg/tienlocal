@@ -1,0 +1,34 @@
+@import './variables.css';
+
+.navbar {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.elementoNav {
+  position: relative;
+
+  color: var(--texto);
+
+  transition: color 0.3s ease-in;
+}
+
+.elementoNav::after {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+
+  width: 0;
+  height: 2px;
+
+  background-color: var(--color-primario);
+
+  transition: width 0.3s ease-in;
+}
+
+.elementoNav:hover::after,
+.elementoNav:focus::after {
+  width: 100%;
+}
