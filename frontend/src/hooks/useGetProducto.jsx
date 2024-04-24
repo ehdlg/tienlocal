@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { API_URL } from '../constantes';
 
 function useGetProducto(id) {
@@ -6,8 +6,8 @@ function useGetProducto(id) {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  async function obtenerProducto(id) {
-    const URL = `${API_URL}/producto/${id}`;
+  const obtenerProducto = useCallback(async (id) => {
+    const URL = `${API_URL}/productos/${id}`;
 
     setLoading(true);
     setError(null);
@@ -27,11 +27,11 @@ function useGetProducto(id) {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
     obtenerProducto(id);
-  }, [id]);
+  }, [id, obtenerProducto]);
 
   return { producto, error, loading };
 }
