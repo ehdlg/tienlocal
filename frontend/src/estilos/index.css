@@ -4,23 +4,25 @@
 }
 
 body {
-  margin: 0;
   display: flex;
-  min-width: 320px;
+
   min-height: 100vh;
+
+  margin: 0;
 }
 
 main {
-  width: min(100% - 3rem, 1500px);
-  border: 1px solid red;
-  margin-inline: auto;
   display: flex;
-  text-wrap: break-word;
+
+  width: min(100% - 3rem, 1500px);
   min-height: 80vh;
+
+  margin-inline: auto;
 }
 
 #root {
-  min-width: 100vw;
   display: grid;
   grid-template-rows: auto auto 10%;
+
+  min-width: 100vw;
 }
