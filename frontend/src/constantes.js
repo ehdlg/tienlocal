@@ -7,3 +7,21 @@ export const FILTROS_DEFECTO = {
   maxPrice: 10000,
   name: '',
 };
+
+export const ELEMENTOS_NAV = [
+  {
+    nombre: 'Productos',
+    url: '/productos',
+    activo: false,
+  },
+  {
+    nombre: 'Mi cuenta',
+    url: '/perfil',
+    activo: false,
+  },
+  {
+    nombre: 'Sobre Tienlocal',
+    url: '/about',
+    activo: true,
+  },
+];
