@@ -22,7 +22,7 @@ main {
 
 #root {
   display: grid;
-  grid-template-rows: auto auto 10%;
+  grid-template-rows: 5% auto 10%;
 
   min-width: 100vw;
 }
@@ -31,4 +31,8 @@ img {
   max-width: 100%;
 
   object-fit: contain;
+}
+
+a {
+  text-decoration: none;
 }
