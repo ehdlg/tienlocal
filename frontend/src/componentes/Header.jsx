@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
+import estilos from '../estilos/Header.module.css';
 
 function Header() {
   return (
-    <header>
-      <h1>Tienlocal</h1>
-      <nav>
-        <ul>
-          <Link>Productos</Link>
-          <Link>Mi cuenta</Link>
-          <Link>Sobre Tienlocal</Link>
-        </ul>
-      </nav>
+    <header className={estilos.wrapper}>
+      <div className={estilos.content}>
+        <Link className='link' to={'/'}>
+          <span className={estilos.titulo}>Tienlocal</span>
+        </Link>
+        <Navbar />
+      </div>
     </header>
   );
 }
