@@ -1,7 +1,7 @@
 @import './variables.css';
 
 .wrapper {
-  position: fixed;
+  position: sticky;
 
   width: 100%;
 
@@ -21,13 +21,18 @@
   margin-inline: auto;
 }
 
-.img {
-  max-width: 100%;
-  width: 200px;
-  height: 200px;
+.logo {
+  max-width: 45px;
 }
 
 .titulo {
   color: var(--texto);
   font-size: 1.25rem;
+}
+
+.logoTitulo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
 }
