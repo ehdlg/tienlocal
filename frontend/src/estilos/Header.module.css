@@ -32,7 +32,11 @@
 }
 
 .titulo {
-  color: var(--texto);
+  background: -webkit-linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  font-weight: bold;
   font-size: 1.25rem;
 }
 

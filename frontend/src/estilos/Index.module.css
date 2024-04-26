@@ -16,10 +16,13 @@
 .titulo {
   font-size: 2rem;
   font-weight: 600;
+  background: -webkit-linear-gradient(45deg, var(--color-primario), var(--color-secundario));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .subtitulo {
-  color: var(--color-primario);
+  color: #c3c3c3;
   font-size: 1.25rem;
   font-weight: 500;
 }
