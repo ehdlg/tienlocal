@@ -1,14 +1,20 @@
 @import './variables.css';
 
 .wrapper {
-  position: sticky;
+  position: fixed;
+  top: 0;
+  left: 0;
 
   width: 100%;
+  height: var(--header-altura);
 
   box-shadow: var(--color-primario) 0px 20px 30px -20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #f3f3f3;
 
-  opacity: 0.8;
+  opacity: 0.9;
+
+  z-index: 999;
 }
 
 .content {

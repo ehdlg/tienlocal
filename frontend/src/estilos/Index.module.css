@@ -1,0 +1,25 @@
+@import './variables.css';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  width: 100%;
+}
+
+.logo {
+  max-width: 250px;
+}
+
+.titulo {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.subtitulo {
+  color: var(--color-primario);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
