@@ -20,6 +20,7 @@ main {
   min-height: 80vh;
 
   margin-inline: auto;
+  margin-block: 3rem;
 }
 
 #root {
@@ -28,7 +29,7 @@ main {
 
   min-width: 100vw;
 
-  margin-top: var(--header-altura);
+  margin-top: 3rem;
 }
 
 img {
