@@ -26,7 +26,7 @@ router.patch(
 
 router.delete('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.borrar);
 
-router.get('/', verificarToken, comprobarPermisosAdministrador, EmpresaControlador.obtenerTodos);
+router.get('/', EmpresaControlador.obtenerTodos);
 
 router.post('/', crearEmpresaReglas, validacion, generarHashedPassword, EmpresaControlador.crear);
 

@@ -5,7 +5,7 @@ import { HTTPError } from '../utils/errores/index.js';
 export default class EmpresaControlador {
   static async obtenerTodos(req, res, next) {
     try {
-      const empresas = await Empresa.obtenerTodos();
+      const empresas = await Empresa.ObtenerTodosSinCredenciales();
 
       return res.json(empresas);
     } catch (error) {
