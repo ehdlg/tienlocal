@@ -1,11 +1,13 @@
 export const API_URL = import.meta.env.VITE_API_URL;
 
-export const LIMITE_PRODUCTOS = 12;
+export const LIMITE_PRODUCTOS = 9999;
 
 export const FILTROS_DEFECTO = {
-  minPrice: 0,
-  maxPrice: 10000,
-  name: '',
+  precioMinimo: 0,
+  precioMaximo: 9999,
+  nombre: '',
+  categoria: 0,
+  empresa: 'TODAS',
 };
 
 export const ELEMENTOS_NAV = [
