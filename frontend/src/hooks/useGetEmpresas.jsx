@@ -22,12 +22,14 @@ function useGetEmpresas() {
       setEmpresas(datos);
     } catch (error) {
       setError('No se ha podido establecer conexión con la base de datos');
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   useEffect(() => {
     obtenerEmpresas();
-  }, []);
+  }, [obtenerEmpresas]);
 
   return { empresas, error, loading };
 }
