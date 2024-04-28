@@ -18,7 +18,6 @@ export default class Base {
       parametros.push(offset);
     }
 
-    console.log({ limite, offset, consulta });
     try {
       const [filas] = await this.db.execute(consulta, parametros);
 

@@ -14,7 +14,6 @@ function useGetEmpresas() {
     try {
       const respuesta = await fetch(URL);
 
-      console.log(respuesta);
       if (respuesta.status !== 200)
         return setError('No se ha podido establecer conexión con la base de datos');
 
