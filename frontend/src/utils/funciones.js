@@ -4,3 +4,13 @@ export function comprobarFiltros(filtros) {
 
   return filtrosValidos;
 }
+
+export function crearArrayPaginas(paginas) {
+  if (typeof paginas !== 'number') return null;
+
+  if (paginas < 0) return [];
+
+  return Array(paginas)
+    .fill()
+    .map((_, index) => index + 1);
+}
