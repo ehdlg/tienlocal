@@ -84,7 +84,7 @@ export default class ProductoControlador {
       const [resultado] = await Producto.obtenerCantidad();
       const [cantidad] = Object.values(resultado);
 
-      return res.json({ cantidad });
+      return res.json(cantidad);
     } catch (error) {
       next(error);
     }
