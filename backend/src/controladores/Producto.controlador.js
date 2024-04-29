@@ -78,4 +78,15 @@ export default class ProductoControlador {
       next(error);
     }
   }
+
+  static async obtenerCantidad(req, res, next) {
+    try {
+      const [resultado] = await Producto.obtenerCantidad();
+      const [cantidad] = Object.values(resultado);
+
+      return res.json({ cantidad });
+    } catch (error) {
+      next(error);
+    }
+  }
 }

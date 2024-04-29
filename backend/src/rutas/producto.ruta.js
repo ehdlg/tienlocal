@@ -8,6 +8,8 @@ import { validacion } from '../middlewares/validacion/index.js';
 
 const router = Router();
 
+router.get('/cantidad', ProductoControlador.obtenerCantidad);
+
 router.get('/:id', ProductoControlador.obtenerUno);
 
 router.patch('/:id', actualizarProductoReglas, validacion, ProductoControlador.actualizar);

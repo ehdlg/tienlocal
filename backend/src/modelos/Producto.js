@@ -45,7 +45,6 @@ export default class Producto extends Base {
       parametros.push(offset);
     }
 
-    console.log({ consulta, parametros });
     try {
       const [filas] = await this.db.execute(consulta, parametros);
 
