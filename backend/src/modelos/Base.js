@@ -99,4 +99,16 @@ export default class Base {
       throw error;
     }
   }
+
+  static async obtenerCantidad() {
+    const consulta = `SELECT COUNT(id) FROM ${this.tabla}`;
+
+    try {
+      const [cantidad] = await this.db.query(consulta);
+
+      return cantidad;
+    } catch (error) {
+      throw error;
+    }
+  }
 }
