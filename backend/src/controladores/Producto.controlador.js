@@ -80,8 +80,18 @@ export default class ProductoControlador {
   }
 
   static async obtenerCantidad(req, res, next) {
+    const { nombre, precioMinimo, precioMaximo, categoria, empresa } = req.query;
+
+    const filtros = {
+      nombre,
+      precioMinimo,
+      precioMaximo,
+      categoria,
+      empresa,
+    };
+
     try {
-      const [resultado] = await Producto.obtenerCantidad();
+      const [resultado] = await Producto.obtenerCantidadFiltrado(filtros);
       const [cantidad] = Object.values(resultado);
 
       return res.json(cantidad);
