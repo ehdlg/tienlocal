@@ -15,6 +15,9 @@ body {
 
 main {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 
   width: min(100% - 3rem, 1500px);
   min-height: 80vh;
