@@ -1,10 +1,10 @@
 import { crearArrayPaginas } from '../utils/funciones';
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid';
 import estilos from '../estilos/Paginacion.module.css';
 
 function Paginacion({ actualizar, pagina, numeroPaginas }) {
   const mostrarBotonSiguiente = pagina < numeroPaginas;
   const mostrarBotonAnterior = pagina > 1;
-
   const arrayPaginas = crearArrayPaginas(numeroPaginas);
 
   return (
@@ -12,10 +12,11 @@ function Paginacion({ actualizar, pagina, numeroPaginas }) {
       {
         <button
           onClick={actualizar.anterior}
+          className={estilos.anteriorSiguiente}
           style={{ opacity: mostrarBotonAnterior ? 1 : 0 }}
           disabled={!mostrarBotonAnterior}
         >
-          Anterior
+          {<ArrowLeftIcon />} Anterior
         </button>
       }
       <div className={estilos.paginas}>
@@ -39,10 +40,11 @@ function Paginacion({ actualizar, pagina, numeroPaginas }) {
       {
         <button
           onClick={actualizar.siguiente}
+          className={estilos.anteriorSiguiente}
           style={{ opacity: mostrarBotonSiguiente ? 1 : 0 }}
           disabled={!mostrarBotonSiguiente}
         >
-          Siguiente
+          Siguiente {<ArrowRightIcon />}
         </button>
       }
     </div>

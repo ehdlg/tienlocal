@@ -1,0 +1,78 @@
+@import './variables.css';
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 50%;
+}
+
+.anteriorSiguiente {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  border-radius: 0.25rem;
+  border: 2px solid var(--color-secundario);
+
+  background-color: white;
+
+  color: var(--color-primario);
+
+  font-weight: bold;
+
+  padding: 10px 16px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease-in-out;
+}
+
+.anteriorSiguiente svg {
+  width: 1.5rem;
+}
+.anteriorSiguiente:hover,
+.anteriorSiguiente:focus {
+  border: 2px solid #ffffff;
+  background-color: var(--color-primario);
+
+  color: white;
+}
+
+.paginas {
+  display: flex;
+  gap: 1rem;
+}
+
+.pagina {
+  border-radius: 50%;
+  border: 1px solid var(--color-primario);
+
+  font-weight: bold;
+
+  padding: 8px 12px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease-in;
+}
+
+.paginaNoSeleccionada {
+  background-color: #fff;
+  color: var(--color-primario);
+}
+
+.paginaSeleccionada {
+  border: 2px solid var(--color-secundario);
+  background-color: var(--color-primario);
+
+  color: #fff;
+}
+
+.paginas button:hover {
+  border: 1px solid var(--color-secundario);
+  background-color: var(--color-primario);
+
+  color: #fff;
+}
