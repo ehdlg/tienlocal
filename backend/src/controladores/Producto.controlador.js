@@ -26,7 +26,7 @@ export default class ProductoControlador {
     const { id } = req.params;
 
     try {
-      const producto = await Producto.obtenerUno(id);
+      const producto = await Producto.obtenerUnoDetalles(id);
 
       if (null == producto) throw new HTTPError({ mensaje: 'Producto no encontrado', estado: 404 });
 
