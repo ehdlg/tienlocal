@@ -7,7 +7,7 @@ export default class Empresa extends Login {
     const consulta = 'SELECT id, nombre, descripcion, ubicacion FROM empresas;';
 
     try {
-      const empresas = await this.db.query(consulta);
+      const [empresas] = await this.db.query(consulta);
 
       return empresas;
     } catch (error) {

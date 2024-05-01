@@ -1,14 +1,13 @@
 import { Router } from 'express';
 import ProductoControlador from '../controladores/Producto.controlador.js';
-import {
-  actualizarProductoReglas,
-  crearProductoReglas,
-} from '../middlewares/validacion/productos.js';
+import { actualizarProductoReglas, crearProductoReglas } from '../middlewares/validacion/productos.js';
 import { validacion } from '../middlewares/validacion/index.js';
 
 const router = Router();
 
 router.get('/cantidad', ProductoControlador.obtenerCantidad);
+
+router.get('/precioMaximo', ProductoControlador.obtenerPrecioMaximo);
 
 router.get('/:id', ProductoControlador.obtenerUno);
 

@@ -94,4 +94,16 @@ export default class Producto extends Base {
       throw error;
     }
   }
+
+  static async obtenerPrecioMaximo() {
+    const consulta = 'SELECT MAX(precio) FROM productos';
+
+    try {
+      const [precio] = await this.db.query(consulta);
+
+      return precio;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

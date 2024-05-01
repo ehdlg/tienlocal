@@ -70,8 +70,7 @@ export default class ProductoControlador {
     try {
       const productoBorrado = await Producto.borrar(id);
 
-      if (null == productoBorrado)
-        throw new HTTPError({ mensaje: 'Producto no encontrado', estado: 404 });
+      if (null == productoBorrado) throw new HTTPError({ mensaje: 'Producto no encontrado', estado: 404 });
 
       return res.json(productoBorrado);
     } catch (error) {
@@ -95,6 +94,18 @@ export default class ProductoControlador {
       const [cantidad] = Object.values(resultado);
 
       return res.json(cantidad);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async obtenerPrecioMaximo(req, res, next) {
+    try {
+      const [resultado] = await Producto.obtenerPrecioMaximo();
+
+      const [precio] = Object.values(resultado);
+
+      return res.json(Number(precio));
     } catch (error) {
       next(error);
     }
