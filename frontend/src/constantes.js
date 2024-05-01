@@ -8,7 +8,7 @@ export const OFFSET_DEFECTO = 0;
 
 export const FILTROS_DEFECTO = {
   precioMinimo: 0,
-  precioMaximo: 4000,
+  precioMaximo: 0,
   nombre: '',
   categoria: 0,
   empresa: 0,
