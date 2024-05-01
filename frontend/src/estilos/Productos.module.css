@@ -1,0 +1,11 @@
+@import './variables.css';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  align-content: center;
+  justify-items: center;
+  gap: 2rem;
+
+  width: 100%;
+}

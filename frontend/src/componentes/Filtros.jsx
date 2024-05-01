@@ -76,13 +76,13 @@ Filtros.Precio = Precio;
 Filtros.Empresas = Empresas;
 
 function Filtros({ filtros, actualizarFiltros }) {
-  const { datos: categorias, error: errorCategoria, loading: loadingCategoria } = useGetDatos('categorias');
+  const { datos: categorias, error: errorCategoria } = useGetDatos('categorias');
 
   function reiniciarFiltros() {
     actualizarFiltros(FILTROS_DEFECTO);
   }
 
-  const { datos: empresas, error: errorEmpresa, loading: loadingEmpresa } = useGetDatos('empresas');
+  const { datos: empresas, error: errorEmpresa } = useGetDatos('empresas');
 
   const { datos: precioMaximo } = useGetDatos('/productos/precioMaximo');
 
@@ -107,7 +107,7 @@ function Filtros({ filtros, actualizarFiltros }) {
   if (errorCategoria || errorEmpresa) return <h2 style={{ textAlign: 'center' }}>error</h2>;
 
   return (
-    <form className onSubmit={manejarFormulario}>
+    <form onSubmit={manejarFormulario}>
       <fieldset className={estilos.wrapper}>
         <Filtros.Nombre valor={filtros.nombre} />
         <Filtros.Precio filtros={filtros} tipoPrecio={'precioMinimo'} precioMaximo={precioMaximo ?? 4000} />
