@@ -6,22 +6,25 @@ export const crearUsuarioReglas = (() => {
   return [
     body('nombre')
       .exists()
-      .withMessage('Debe incluir un nombre')
+      .withMessage('Debes enviar el campo nombre')
+      .notEmpty()
+      .withMessage('El campo de nombre no puede estar vacío')
       .isLength({ min: 2, max: 150 })
       .withMessage('El nombre debe tener una longitud de entre 2 y 150 caracteres'),
 
     body('apellidos')
       .exists()
+      .withMessage('Debes enviar el campo apellidos')
+      .notEmpty()
+      .withMessage('El campo de apellidos no puede estar vacío')
       .isLength({ min: 2, max: 300 })
       .withMessage('Los apellidos no pueden ocupar más de 300 caracteres'),
 
-    body('email')
-      .exists()
-      .isEmail()
-      .withMessage('El correo introducido no es válido')
-      .custom(comprobarEmail),
+    body('email').exists().isEmail().withMessage('El correo introducido no es válido').custom(comprobarEmail),
 
     body('contrasena')
+      .exists()
+      .withMessage('Debes enviar el campo contraseña')
       .matches(regexContrasena)
       .withMessage(
         `La contraseña debe contener una minúscula, 
@@ -44,11 +47,7 @@ export const actualizarUsuarioReglas = (() => {
       .isLength({ min: 2, max: 300 })
       .withMessage('Los apellidos no pueden ocupar más de 300 caracteres'),
 
-    body('email')
-      .optional()
-      .isEmail()
-      .withMessage('El correo introducido no es válido')
-      .custom(comprobarEmail),
+    body('email').optional().isEmail().withMessage('El correo introducido no es válido').custom(comprobarEmail),
 
     body('contrasena')
       .optional()

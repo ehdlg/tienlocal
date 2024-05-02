@@ -9,7 +9,7 @@ export async function comprobarEmail(email) {
 
     const emailExiste = null != usuarioEmail || null != empresaEmail;
 
-    if (emailExiste) throw new Error('El email ya existe.');
+    if (emailExiste) throw new Error('El email ya existe');
   } catch (error) {
     throw error;
   }

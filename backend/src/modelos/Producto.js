@@ -117,7 +117,7 @@ export default class Producto extends Base {
     try {
       const [producto] = await this.db.execute(consulta, [id]);
 
-      return producto;
+      return producto[0] || null;
     } catch (error) {
       throw error;
     }

@@ -6,8 +6,6 @@ async function existeEmpresa(id) {
   try {
     const empresa = await Empresa.obtenerUno(id);
 
-    console.log(empresa);
-
     if (null == empresa) throw new Error('La empresa no existe.');
   } catch (error) {
     throw error;
@@ -82,10 +80,6 @@ export const actualizarProductoReglas = (() => {
 
     body('imagen').optional().isURL().withMessage('La imagen debe ser una URL'),
 
-    body('categoria_id')
-      .optional()
-      .isInt({ min: 1 })
-      .withMessage('ID de categoría no válido')
-      .custom(existeCategoria),
+    body('categoria_id').optional().isInt({ min: 1 }).withMessage('ID de categoría no válido').custom(existeCategoria),
   ];
 })();
