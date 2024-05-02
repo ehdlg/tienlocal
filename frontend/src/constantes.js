@@ -31,3 +31,5 @@ export const ELEMENTOS_NAV = [
     activo: true,
   },
 ];
+
+export const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
