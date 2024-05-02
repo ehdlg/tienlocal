@@ -33,3 +33,58 @@ export const ELEMENTOS_NAV = [
 ];
 
 export const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
+
+export const TIPOS_USUARIO = {
+  usuario: 'Usuario',
+  empresa: 'Empresa',
+};
+
+export const USUARIO_INPUTS = [
+  {
+    type: 'text',
+    name: 'nombre',
+  },
+  {
+    type: 'text',
+    name: 'apellidos',
+  },
+  {
+    type: 'text',
+    name: 'email',
+  },
+  {
+    type: 'password',
+    name: 'contrasena',
+  },
+  {
+    type: 'password',
+    name: 'repetirContrasena',
+  },
+];
+
+export const EMPRESA_INPUTS = [
+  {
+    type: 'text',
+    name: 'nombre',
+  },
+  {
+    type: 'text',
+    name: 'descripcion',
+  },
+  {
+    type: 'text',
+    name: 'ubicacion',
+  },
+  {
+    type: 'text',
+    name: 'email',
+  },
+  {
+    type: 'password',
+    name: 'contrasena',
+  },
+  {
+    type: 'password',
+    name: 'repetirContrasena',
+  },
+];
