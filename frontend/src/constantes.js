@@ -43,22 +43,32 @@ export const USUARIO_INPUTS = [
   {
     type: 'text',
     name: 'nombre',
+    label: 'Nombre',
+    required: true,
   },
   {
     type: 'text',
     name: 'apellidos',
+    label: 'Apellidos',
+    required: true,
   },
   {
     type: 'text',
     name: 'email',
+    label: 'Email',
+    required: true,
   },
   {
     type: 'password',
     name: 'contrasena',
+    label: 'Contraseña',
+    required: true,
   },
   {
     type: 'password',
     name: 'repetirContrasena',
+    label: 'Repite la contraseña',
+    required: true,
   },
 ];
 
@@ -66,25 +76,37 @@ export const EMPRESA_INPUTS = [
   {
     type: 'text',
     name: 'nombre',
+    label: 'Nombre',
+    required: true,
   },
   {
     type: 'text',
     name: 'descripcion',
+    label: 'Descripción',
+    required: true,
   },
   {
     type: 'text',
     name: 'ubicacion',
+    label: 'Ubicación',
+    required: true,
   },
   {
     type: 'text',
     name: 'email',
+    label: 'Email',
+    required: true,
   },
   {
     type: 'password',
     name: 'contrasena',
+    label: 'Contraseña',
+    required: true,
   },
   {
     type: 'password',
     name: 'repetirContrasena',
+    label: 'Repite la contraseña',
+    required: true,
   },
 ];
