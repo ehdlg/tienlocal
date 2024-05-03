@@ -1,0 +1,66 @@
+@import './variables.css';
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1.5rem;
+
+  background-color: #ffffff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 1rem;
+
+  margin-top: 1rem;
+
+  width: min(80% - 5rem, 400px);
+
+  padding: 2rem;
+}
+
+.formulario label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.inputText {
+  display: block;
+
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
+  font-size: 1rem;
+  width: 100%;
+
+  margin-top: 0.5rem;
+
+  padding: 0.5rem 0;
+
+  transition: all 0.2s ease;
+}
+
+.inputText:focus {
+  border-width: 2px;
+  border-color: var(--color-primario);
+}
+
+.label {
+  font-size: 0.85rem;
+}
+
+.boton {
+  color: #ffff;
+
+  margin-top: 2rem;
+
+  background-color: var(--color-secundario);
+
+  font-weight: 700;
+
+  transition: 0.3s ease-in;
+}
+
+.boton:hover,
+.boton:focus {
+  background-color: var(--color-primario);
+}
