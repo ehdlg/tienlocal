@@ -1,0 +1,48 @@
+.titulo {
+  margin-top: 2rem;
+}
+
+.seleccion {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+
+  width: 100%;
+}
+
+.boton {
+  color: var(--texto);
+
+  border: 2px solid transparent;
+
+  transition: 0.2s ease-in;
+}
+
+.boton:hover,
+.boton:focus {
+  border-color: var(--color-primario);
+
+  background-color: #d0d0d7;
+}
+
+.boton[data-seleccionado='true'] {
+  border: 2px solid var(--color-primario);
+
+  background-color: #d0d0d7;
+}
+
+.redireccion {
+  color: var(--texto);
+}
+
+.redireccion a {
+  font-size: 1rem;
+
+  text-decoration: solid underline var(--texto) 1px;
+
+  transition: 0.3s ease-in;
+}
+
+.redireccion a:hover {
+  text-decoration-color: var(--color-primario);
+}
