@@ -20,8 +20,6 @@ function Productos() {
     setFiltros(nuevosFiltros);
   }
 
-  console.log({ filtros });
-
   const OFFSET = pagina === 1 ? 0 : (pagina - 1) * LIMITE_PRODUCTOS;
 
   const {
