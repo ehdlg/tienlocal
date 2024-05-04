@@ -1,0 +1,85 @@
+@import './variables.css';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+
+  width: min(100% - 3rem, 800px);
+
+  border-radius: 1rem;
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  background-color: #fff;
+
+  margin-inline: auto;
+  padding: 3rem;
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+svg {
+  max-width: 20px;
+}
+
+.info {
+  display: flex;
+
+  gap: 1rem;
+}
+
+.info > * {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.nombre {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.descripcion {
+  grid-column: 1/3;
+  margin-top: 3rem;
+
+  font-style: italic;
+
+  color: #bbb;
+}
+
+.boton {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 5px;
+
+  background-color: var(--color-secundario);
+
+  color: var(--texto);
+
+  padding: 0.5rem 0;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.boton:hover {
+  background-color: var(--color-primario);
+}
+
+.boton svg {
+  width: 100%;
+}
