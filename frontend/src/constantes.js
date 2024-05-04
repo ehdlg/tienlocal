@@ -37,6 +37,7 @@ export const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
 export const TIPOS_USUARIO = {
   usuario: 'Usuario',
   empresa: 'Empresa',
+  administrador: 'Administrador',
 };
 
 export const USUARIO_INPUTS = [
