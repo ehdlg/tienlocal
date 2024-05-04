@@ -10,7 +10,9 @@ function Formulario({ inputs, manejarFormulario, textoSubmit, children }) {
           <label htmlFor={inputId} key={inputId} className={estilos.label}>
             {input.label}
             <input
-              className={input.type == 'text' || input.type == 'password' ? estilos.inputText : ''}
+              className={
+                input.type == 'text' || input.type == 'password' || input.type == 'email' ? estilos.inputText : ''
+              }
               type={input.type}
               name={input.name}
               id={inputId}
