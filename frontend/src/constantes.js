@@ -110,3 +110,18 @@ export const EMPRESA_INPUTS = [
     required: true,
   },
 ];
+
+export const LOGIN_INPUTS = [
+  {
+    type: 'email',
+    label: 'Email',
+    required: true,
+    name: 'email',
+  },
+  {
+    type: 'password',
+    label: 'Contraseña',
+    name: 'contrasena',
+    required: true,
+  },
+];
