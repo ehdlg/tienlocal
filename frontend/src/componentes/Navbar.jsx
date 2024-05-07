@@ -7,7 +7,7 @@ function Navbar() {
     <nav>
       <ul className={estilos.navbar}>
         {ELEMENTOS_NAV.map((elemento) => {
-          return <NavbarElemento elemento={elemento} key={elemento.url} />;
+          return <NavbarElemento elemento={elemento} key={elemento.id} />;
         })}
       </ul>
     </nav>
