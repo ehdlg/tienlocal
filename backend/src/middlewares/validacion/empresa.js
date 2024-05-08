@@ -1,5 +1,10 @@
 import { body, param } from 'express-validator';
-import { comprobarEmail, comprobarNombreEmpresa } from './utils.js';
+import {
+  comprobarContrasenaRepetida,
+  comprobarEmail,
+  comprobarNombreEmpresa,
+  comprobarNuevaContrasenaEmpresa,
+} from './utils.js';
 import { regexContrasena } from './constantes.js';
 
 export const crearEmpresaReglas = (() => {
@@ -14,12 +19,7 @@ export const crearEmpresaReglas = (() => {
       .withMessage('El nombre de la empresa no puede ocupar más de 100 caracteres')
       .custom(comprobarNombreEmpresa),
 
-    body('email')
-      .exists()
-      .withMessage('Introduce un email')
-      .bail()
-      .isEmail()
-      .custom(comprobarEmail),
+    body('email').exists().withMessage('Introduce un email').bail().isEmail().custom(comprobarEmail),
 
     body('contrasena')
       .exists()
@@ -29,7 +29,8 @@ export const crearEmpresaReglas = (() => {
       .withMessage(
         `La contraseña debe contener una minúscula, 
         una mayúscula, un número y mínimo 8 caracteres`
-      ),
+      )
+      .custom(comprobarContrasenaRepetida),
 
     body('descripcion')
       .exists()
@@ -72,7 +73,9 @@ export const actualizarEmpresaReglas = (() => {
       .withMessage(
         `La contraseña debe contener una minúscula, 
         una mayúscula, un número y mínimo 8 caracteres`
-      ),
+      )
+      .custom(comprobarContrasenaRepetida)
+      .custom(comprobarNuevaContrasenaEmpresa),
 
     body('descripcion').optional().notEmpty().withMessage('La descripción no puede estar vacía'),
 

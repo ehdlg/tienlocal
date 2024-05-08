@@ -44,15 +44,14 @@ export async function comprobarUsuarioCredenciales(req, res, next) {
     const [usuario] = await Usuario.obtenerPorCredenciales(email);
 
     const credencialesCorrectas =
-      null != usuario &&
-      usuario.email === email &&
-      (await bcrypt.compare(contrasena, usuario.contrasena));
+      null != usuario && usuario.email === email && (await bcrypt.compare(contrasena, usuario.contrasena));
 
-    if (!credencialesCorrectas)
-      throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
+    if (!credencialesCorrectas) throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
 
     req.login = {
       id: usuario.id,
+      nombre: usuario.nombre,
+      apellidos: usuario.apellidos,
       email: usuario.email,
       rol: 'usuario',
     };
@@ -73,16 +72,16 @@ export async function comprobarEmpresaCredenciales(req, res, next) {
     const [empresa] = await Empresa.obtenerPorCredenciales(email);
 
     const credencialesCorrectas =
-      null != empresa &&
-      empresa.email === email &&
-      (await bcrypt.compare(contrasena, empresa.contrasena));
+      null != empresa && empresa.email === email && (await bcrypt.compare(contrasena, empresa.contrasena));
 
-    if (!credencialesCorrectas)
-      throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
+    if (!credencialesCorrectas) throw new HTTPError({ mensaje: 'Las credenciales no son correctas', estado: 400 });
 
     req.login = {
       id: empresa.id,
       email: empresa.email,
+      nombre: empresa.nombre,
+      ubicacion: empresa.ubicacion,
+      descripcion: empresa.descripcion,
       rol: 'empresa',
     };
 
@@ -107,14 +106,12 @@ export function crearToken(req, res, next) {
 
 export function verificarToken(req, res, next) {
   try {
-    if (null == req.headers['authorization'])
-      throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
+    if (null == req.headers['authorization']) throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
 
     const { SECRET } = process.env;
     const [bearer, token] = req.headers['authorization'].split(' ');
 
-    if (bearer !== 'Bearer' || null == token)
-      throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
+    if (bearer !== 'Bearer' || null == token) throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
 
     const tokenVerificado = jwt.verify(token, SECRET);
 

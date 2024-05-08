@@ -61,8 +61,7 @@ export default class UsuarioControlador {
     try {
       const usuarioBorrado = await Usuario.borrar(id);
 
-      if (null == usuarioBorrado)
-        throw new HTTPError({ mensaje: 'Usuario no encontrado', estado: 404 });
+      if (null == usuarioBorrado) throw new HTTPError({ mensaje: 'Usuario no encontrado', estado: 404 });
 
       return res.json(usuarioBorrado);
     } catch (error) {

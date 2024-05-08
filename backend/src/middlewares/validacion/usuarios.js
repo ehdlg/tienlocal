@@ -1,5 +1,5 @@
 import { body, param } from 'express-validator';
-import { comprobarEmail } from './utils.js';
+import { comprobarEmail, comprobarContrasenaRepetida, comprobarNuevaContrasenaUsuario } from './utils.js';
 import { regexContrasena } from './constantes.js';
 
 export const crearUsuarioReglas = (() => {
@@ -29,7 +29,8 @@ export const crearUsuarioReglas = (() => {
       .withMessage(
         `La contraseña debe contener una minúscula, 
         una mayúscula, un número y mínimo 8 caracteres`
-      ),
+      )
+      .custom(comprobarContrasenaRepetida),
   ];
 })();
 
@@ -55,6 +56,10 @@ export const actualizarUsuarioReglas = (() => {
       .withMessage(
         `La contraseña debe contener una minúscula, 
       una mayúscula, un número y mínimo 8 caracteres`
-      ),
+      )
+      .bail()
+      .custom(comprobarContrasenaRepetida)
+      .bail()
+      .custom(comprobarNuevaContrasenaUsuario),
   ];
 })();
