@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useMemo, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
 import { toast } from 'sonner';
 
@@ -28,5 +28,14 @@ export function ContextoProvider({ children }) {
     toast.info('Sesión cerrada correctamente');
   }
 
-  return <Contexto.Provider value={{ login, iniciarSesion, cerrarSesion }}>{children}</Contexto.Provider>;
+  const valoresContexto = useMemo(() => {
+    return {
+      login,
+      iniciarSesion,
+      cerrarSesion,
+      sesionIniciada: login != null,
+    };
+  }, [login]);
+
+  return <Contexto.Provider value={valoresContexto}>{children}</Contexto.Provider>;
 }
