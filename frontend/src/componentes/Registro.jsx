@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { validarContrasena } from '../utils/validacion';
 import Formulario from './Formulario';
+import Input from './Input';
 import { API_URL, TIPOS_USUARIO, EMPRESA_INPUTS, USUARIO_INPUTS } from '../constantes';
 import { toast } from 'sonner';
 import estilos from '../estilos/Registro.module.css';
+import estilosFormulario from '../estilos/Formulario.module.css';
 
 function Registro() {
   const [tipoRegistro, setTipoRegistro] = useState(TIPOS_USUARIO.usuario);
@@ -25,9 +27,7 @@ function Registro() {
     const formulario = new FormData(e.target);
     const datosFormulario = Object.fromEntries(formulario.entries());
 
-    const { repetirContrasena, ...nuevoUsuario } = datosFormulario;
-
-    const erroresContrasena = validarContrasena(nuevoUsuario.contrasena, repetirContrasena);
+    const erroresContrasena = validarContrasena(datosFormulario.contrasena, datosFormulario.repetirContrasena);
 
     if (erroresContrasena.length !== 0) {
       erroresContrasena.forEach((error) => {
@@ -39,7 +39,7 @@ function Registro() {
     try {
       const respuesta = await fetch(API_URL + RECURSO, {
         method: 'POST',
-        body: JSON.stringify(nuevoUsuario),
+        body: JSON.stringify(datosFormulario),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -74,7 +74,8 @@ function Registro() {
       <span className={estilos.redireccion}>
         O <Link to={'/login'}>inicia sesion</Link>
       </span>
-      <Formulario inputs={inputs} manejarFormulario={crearRegistro} textoSubmit={'Registrar'}>
+
+      <Formulario manejarFormulario={crearRegistro} textoSubmit={'Registrar'}>
         <div className={estilos.seleccion}>
           <button
             className={estilos.boton}
@@ -94,6 +95,23 @@ function Registro() {
             Empresa
           </button>
         </div>
+        {inputs.map((input) => {
+          const inputId = `registro-${input.name}`;
+
+          return (
+            <Input
+              id={inputId}
+              name={input.name}
+              textoLabel={input.label}
+              type={input.type}
+              key={inputId}
+              required={input.required}
+            />
+          );
+        })}
+        <button className={estilosFormulario.boton} type='submit'>
+          Registrar
+        </button>
       </Formulario>
     </>
   );

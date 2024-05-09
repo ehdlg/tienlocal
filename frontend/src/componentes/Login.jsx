@@ -1,15 +1,21 @@
 import { useState, useContext } from 'react';
 import Formulario from './Formulario';
-import { Link } from 'react-router-dom';
+import Input from './Input';
+import { Link, Navigate } from 'react-router-dom';
 import { API_URL, LOGIN_INPUTS, TIPOS_USUARIO } from '../constantes';
 import { toast } from 'sonner';
 import { Contexto } from '../context';
 import estilos from '../estilos/Registro.module.css';
+import estilosFormulario from '../estilos/Formulario.module.css';
 
 function Login() {
+  const { sesionIniciada, iniciarSesion } = useContext(Contexto);
+
   const [tipoRegistro, setTipoRegistro] = useState(TIPOS_USUARIO.usuario);
 
-  const { iniciarSesion } = useContext(Contexto);
+  if (sesionIniciada) {
+    return <Navigate to='/perfil' />;
+  }
 
   function actulizarTipoRegistro(nuevoTipo) {
     return function () {
@@ -71,9 +77,7 @@ function Login() {
 
       toast.success('Inicio de sesión correcto. Bienvenido.');
 
-      setTimeout(() => {
-        window.location.href = '/';
-      }, 1000);
+      return <Navigate to='/perfil' />;
     } catch (error) {
       console.error(error);
     }
@@ -85,7 +89,7 @@ function Login() {
       <span className={estilos.redireccion}>
         O <Link to={'/registro'}>regístrate</Link>
       </span>
-      <Formulario manejarFormulario={manejarFormulario} inputs={LOGIN_INPUTS} textoSubmit={'Iniciar sesión'}>
+      <Formulario manejarFormulario={manejarFormulario}>
         <div className={estilos.seleccion}>
           <button
             className={estilos.boton}
@@ -114,6 +118,16 @@ function Login() {
             Administrador
           </button>
         </div>
+
+        {LOGIN_INPUTS.map((input) => {
+          return (
+            <Input id={input.name} name={input.name} textoLabel={input.label} key={input.name} type={input.type} />
+          );
+        })}
+
+        <button type='submit' className={estilosFormulario.boton}>
+          Iniciar sesión
+        </button>
       </Formulario>
     </>
   );
