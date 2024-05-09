@@ -18,17 +18,43 @@ export const ELEMENTOS_NAV = [
   {
     nombre: 'Productos',
     url: '/productos',
-    activo: false,
+    id: crypto.randomUUID(),
   },
   {
     nombre: 'Mi cuenta',
-    url: '/perfil',
-    activo: false,
+    url: '',
+    id: crypto.randomUUID(),
   },
   {
     nombre: 'Sobre Tienlocal',
     url: '/about',
-    activo: true,
+    id: crypto.randomUUID(),
+  },
+];
+
+export const ELEMENTOS_SUBMENU_LOGEADO = [
+  {
+    nombre: 'Perfil',
+    url: '/perfil',
+    id: crypto.randomUUID(),
+  },
+  {
+    nombre: 'Cerrar sesión',
+    url: '/logout',
+    id: crypto.randomUUID(),
+  },
+];
+
+export const ELEMENTOS_SUBMENU_NO_LOGEADO = [
+  {
+    nombre: 'Iniciar sesión',
+    url: '/login',
+    id: crypto.randomUUID(),
+  },
+  {
+    nombre: 'Registrarse',
+    url: '/registro',
+    id: crypto.randomUUID(),
   },
 ];
 
