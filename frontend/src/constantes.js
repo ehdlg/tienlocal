@@ -66,6 +66,11 @@ export const TIPOS_USUARIO = {
   administrador: 'Administrador',
 };
 
+export const TIPO_EDICION = {
+  INFO: 'info',
+  CONTRASENA: 'contrasena',
+};
+
 export const USUARIO_INPUTS = [
   {
     type: 'text',
@@ -150,5 +155,26 @@ export const LOGIN_INPUTS = [
     label: 'Contraseña',
     name: 'contrasena',
     required: true,
+  },
+];
+
+export const INPUT_EDITAR_CONTRASENA = [
+  {
+    name: 'contrasenaActual',
+    label: 'Contraseña actual',
+    required: true,
+    type: 'password',
+  },
+  {
+    name: 'contrasena',
+    label: 'Nueva Contraseña',
+    required: true,
+    type: 'password',
+  },
+  {
+    name: 'repetirContrasena',
+    label: 'Confirma la contraseña',
+    required: true,
+    type: 'password',
   },
 ];
