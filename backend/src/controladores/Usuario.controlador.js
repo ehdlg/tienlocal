@@ -7,7 +7,9 @@ export default class UsuarioControlador {
     try {
       const usuarios = await Usuario.obtenerTodos();
 
-      return res.json(usuarios);
+      const infoUsuarios = usuarios.map(({ contrasena, id: idUsuario, ...infoUsuario }) => infoUsuario);
+
+      return res.json(infoUsuarios);
     } catch (error) {
       next(error);
     }
@@ -21,7 +23,9 @@ export default class UsuarioControlador {
 
       if (null == usuario) throw new HTTPError({ mensaje: 'Usuario no encontrado', estado: 404 });
 
-      return res.json(usuario);
+      const { contrasena, id: idUsuario, ...infoUsuario } = usuario;
+
+      return res.json(infoUsuario);
     } catch (error) {
       next(error);
     }

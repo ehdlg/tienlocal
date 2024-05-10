@@ -3,7 +3,8 @@ import Empresa from '../../modelos/Empresa.js';
 import bcrypt from 'bcrypt';
 
 export async function comprobarEmail(email, { req }) {
-  if (email == req.tokenVerificado.email) return true;
+  if (null != req.tokenVerificado && null != req.tokenVerificado.email && email == req.tokenVerificado.email)
+    return true;
 
   try {
     const usuarioEmail = await Usuario.obtenerValor('email', email);

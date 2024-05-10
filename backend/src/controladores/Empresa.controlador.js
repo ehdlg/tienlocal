@@ -5,9 +5,11 @@ import { HTTPError } from '../utils/errores/index.js';
 export default class EmpresaControlador {
   static async obtenerTodos(req, res, next) {
     try {
-      const empresas = await Empresa.ObtenerTodosSinCredenciales();
+      const empresas = await Empresa.obtenerTodos();
 
-      return res.json(empresas);
+      const infoEmpresas = empresas.map(({ contrasena, id: idEmpresa, ...infoEmpresa }) => infoEmpresa);
+
+      return res.json(infoEmpresas);
     } catch (error) {
       next(error);
     }
@@ -21,7 +23,9 @@ export default class EmpresaControlador {
 
       if (null == empresa) throw new HTTPError({ mensaje: 'Empresa no encontrada', estado: 404 });
 
-      return res.json(empresa);
+      const { contrasena, id: idEmpresa, ...infoEmpresa } = empresa;
+
+      return res.json(infoEmpresa);
     } catch (error) {
       next(error);
     }
@@ -61,8 +65,7 @@ export default class EmpresaControlador {
     try {
       const empresaBorrada = await Empresa.borrar(id);
 
-      if (null == empresaBorrada)
-        throw new HTTPError({ mensaje: 'Empresa no encontrada', estado: 404 });
+      if (null == empresaBorrada) throw new HTTPError({ mensaje: 'Empresa no encontrada', estado: 404 });
 
       return res.json(empresaBorrada);
     } catch (error) {
