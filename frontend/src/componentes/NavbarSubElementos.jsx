@@ -5,9 +5,8 @@ import { ELEMENTOS_SUBMENU_LOGEADO, ELEMENTOS_SUBMENU_NO_LOGEADO } from '../cons
 import estilos from '../estilos/Navbar.module.css';
 
 function NavbarSubelementos() {
-  const { login, cerrarSesion } = useContext(Contexto);
+  const { sesionIniciada, cerrarSesion } = useContext(Contexto);
 
-  const sesionIniciada = null != login && login.id != null;
   const subelementos = sesionIniciada ? ELEMENTOS_SUBMENU_LOGEADO : ELEMENTOS_SUBMENU_NO_LOGEADO;
 
   return (
