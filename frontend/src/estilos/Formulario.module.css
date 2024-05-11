@@ -1,15 +1,6 @@
 @import './variables.css';
 
 .formulario {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 1.5rem;
-
-  background-color: #ffffff;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  border-radius: 1rem;
-
   margin-top: 1rem;
 
   width: min(80% - 5rem, 400px);

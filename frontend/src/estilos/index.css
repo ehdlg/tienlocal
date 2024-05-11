@@ -10,15 +10,13 @@ html {
 }
 
 body {
-  display: flex;
-
   color: var(--texto);
 
   min-height: 100vh;
 
   margin: 0;
 
-  background-color: #f9fafb;
+  background-color: var(--fondo);
 }
 
 main {
@@ -77,4 +75,19 @@ button {
   cursor: pointer;
 
   transition: 0.3s ease;
+}
+
+label {
+  text-transform: capitalize;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1.5rem;
+
+  background-color: #ffffff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 0.5rem;
 }
