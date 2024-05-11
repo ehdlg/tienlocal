@@ -1,0 +1,91 @@
+@import './variables.css';
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 20% auto;
+  width: 80%;
+  gap: 10px;
+}
+
+.titulo {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1.5rem;
+
+  width: 100%;
+
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.formulario label {
+  font-size: 0.85rem;
+}
+
+.aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 0.5rem;
+}
+
+.boton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  transition: 0.3s ease-in;
+}
+
+.botonEliminar {
+  background-color: #ff0000;
+
+  color: #fff;
+}
+
+.botonEliminar:hover {
+  background-color: #cc0000;
+}
+
+.botonEditar {
+  background-color: var(--color-primario);
+
+  color: #fff;
+}
+
+.botonEditar:hover {
+  background-color: var(--color-secundario);
+}
+.aside button {
+  border: none;
+  background-color: var(--fondo);
+
+  color: var(--texto);
+}
+
+.aside button[data-seleccionado='true'] {
+  background-color: #e5e7eb;
+}
+
+.aside button:hover {
+  background-color: #e5e7eb;
+}
+
+.formularioFooter {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  padding-top: 1rem;
+  margin-top: 1rem;
+}
