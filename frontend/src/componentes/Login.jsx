@@ -121,7 +121,14 @@ function Login() {
 
         {LOGIN_INPUTS.map((input) => {
           return (
-            <Input id={input.name} name={input.name} textoLabel={input.label} key={input.name} type={input.type} />
+            <Input
+              id={input.name}
+              name={input.name}
+              textoLabel={input.label}
+              key={input.name}
+              type={input.type}
+              required={true}
+            />
           );
         })}
 
