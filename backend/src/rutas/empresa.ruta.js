@@ -14,6 +14,8 @@ const router = Router();
 
 router.get('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.obtenerUno);
 
+router.get('/:id/productos', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.obtenerTodosEmpresa);
+
 router.patch(
   '/:id',
   verificarToken,
@@ -30,12 +32,6 @@ router.get('/', EmpresaControlador.obtenerTodos);
 
 router.post('/', crearEmpresaReglas, validacion, generarHashedPassword, EmpresaControlador.crear);
 
-router.post(
-  '/login',
-  loginReglas,
-  validacion,
-  comprobarEmpresaCredenciales,
-  EmpresaControlador.login
-);
+router.post('/login', loginReglas, validacion, comprobarEmpresaCredenciales, EmpresaControlador.login);
 
 export default router;

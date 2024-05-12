@@ -122,4 +122,16 @@ export default class Producto extends Base {
       throw error;
     }
   }
+
+  static async obtenerProductosEmpresa(idEmpresa) {
+    const consulta = 'SELECT nombre, descripcion, precio, stock, imagen FROM productos WHERE id_empresa = ?';
+
+    try {
+      const [productos] = await this.db.execute(consulta, [idEmpresa]);
+
+      return productos;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

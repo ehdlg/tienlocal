@@ -1,5 +1,6 @@
 import { crearToken } from '../middlewares/auth/index.js';
 import Empresa from '../modelos/Empresa.js';
+import Producto from '../modelos/Producto.js';
 import { HTTPError } from '../utils/errores/index.js';
 
 export default class EmpresaControlador {
@@ -71,6 +72,19 @@ export default class EmpresaControlador {
     } catch (error) {
       next(error);
     }
+  }
+
+  static async obtenerTodosEmpresa(req, res, next) {
+    const { id } = req.params;
+
+    try {
+      const productos = await Producto.obtenerProductosEmpresa(id);
+
+      return res.json(productos);
+    } catch (error) {
+      next(error);
+    }
+    return res.json({ empresa: id });
   }
 
   static login = crearToken;
