@@ -78,7 +78,7 @@ export default class EmpresaControlador {
     const { id } = req.params;
 
     try {
-      const productos = await Producto.obtenerProductosEmpresa(id);
+      const productos = await Empresa.obtenerProductosEmpresa(id);
 
       return res.json(productos);
     } catch (error) {
@@ -88,4 +88,20 @@ export default class EmpresaControlador {
   }
 
   static login = crearToken;
+
+  static async borrarProductoEmpresa(req, res, next) {
+    const { id, idProducto } = req.params;
+
+    try {
+      const resultado = await Empresa.borrarProductoEmpresa(idProducto, id);
+
+      const { estado } = resultado;
+
+      return res.status(estado).json(resultado);
+    } catch (error) {
+      next(error);
+    }
+
+    return res.json({ idEmpresa, idProducto });
+  }
 }

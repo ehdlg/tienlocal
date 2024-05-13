@@ -1,6 +1,7 @@
 import Administrador from '../../modelos/Administrador.js';
 import Usuario from '../../modelos/Usuario.js';
 import Empresa from '../../modelos/Empresa.js';
+import Producto from '../../modelos/Producto.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { HTTPError } from '../../utils/errores/index.js';
@@ -158,8 +159,10 @@ export function comprobarPermisosEmpresa(req, res, next) {
 
     const id = Number(req.params.id);
 
+    console.log({ tokenVerificado, id });
+
     if (tokenVerificado.id != id || tokenVerificado.rol !== 'empresa') {
-      throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
+      throw new HTTPError({ mensaje: 'Acceso denegado', estado: 403 });
     }
 
     return next();

@@ -13,8 +13,6 @@ router.get('/:id', ProductoControlador.obtenerUno);
 
 router.patch('/:id', actualizarProductoReglas, validacion, ProductoControlador.actualizar);
 
-router.delete('/:id', ProductoControlador.borrar);
-
 router.get('/', ProductoControlador.obtenerTodos);
 
 router.post('/', crearProductoReglas, validacion, ProductoControlador.crear);

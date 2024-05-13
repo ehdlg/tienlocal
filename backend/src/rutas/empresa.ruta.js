@@ -16,6 +16,13 @@ router.get('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.
 
 router.get('/:id/productos', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.obtenerTodosEmpresa);
 
+router.delete(
+  '/:id/productos/:idProducto',
+  verificarToken,
+  comprobarPermisosEmpresa,
+  EmpresaControlador.borrarProductoEmpresa
+);
+
 router.patch(
   '/:id',
   verificarToken,
