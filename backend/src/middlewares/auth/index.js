@@ -50,8 +50,6 @@ export async function comprobarUsuarioCredenciales(req, res, next) {
 
     req.login = {
       id: usuario.id,
-      nombre: usuario.nombre,
-      apellidos: usuario.apellidos,
       email: usuario.email,
       rol: 'usuario',
     };
@@ -79,9 +77,6 @@ export async function comprobarEmpresaCredenciales(req, res, next) {
     req.login = {
       id: empresa.id,
       email: empresa.email,
-      nombre: empresa.nombre,
-      ubicacion: empresa.ubicacion,
-      descripcion: empresa.descripcion,
       rol: 'empresa',
     };
 
