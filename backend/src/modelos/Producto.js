@@ -124,7 +124,7 @@ export default class Producto extends Base {
   }
 
   static async obtenerProductosEmpresa(idEmpresa) {
-    const consulta = 'SELECT nombre, descripcion, precio, stock, imagen FROM productos WHERE id_empresa = ?';
+    const consulta = 'SELECT id, nombre, descripcion, precio, stock, imagen FROM productos WHERE id_empresa = ?';
 
     try {
       const [productos] = await this.db.execute(consulta, [idEmpresa]);
