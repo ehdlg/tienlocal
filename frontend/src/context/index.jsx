@@ -20,10 +20,12 @@ export function ContextoProvider({ children }) {
     localStorage.setItem('login', JSON.stringify(login));
   }
 
-  function cerrarSesion() {
+  function cerrarSesion(perfilEliminado = false) {
     setLogin(null);
 
     localStorage.removeItem('login');
+
+    if (perfilEliminado) return;
 
     toast.info('Sesión cerrada correctamente');
   }
@@ -33,7 +35,10 @@ export function ContextoProvider({ children }) {
       login,
       iniciarSesion,
       cerrarSesion,
-      sesionIniciada: login != null,
+      sesionIniciada: null != login,
+      esUsuario: null != login && login.rol == 'usuario',
+      esEmpresa: null != login && login.rol == 'empresa',
+      esAdmin: null != login && login.rol == 'admin',
     };
   }, [login]);
 
