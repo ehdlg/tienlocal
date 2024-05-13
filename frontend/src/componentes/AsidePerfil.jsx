@@ -12,7 +12,7 @@ function AsidePerfil() {
 
   return (
     <aside className={estilos.aside}>
-      <Link to={''} className={estilos.link} data-seleccionado={!editarContrasena}>
+      <Link to={''} className={estilos.link} data-seleccionado={!editarContrasena && !productosSeleccionado}>
         <UserIcon />
         Perfil
       </Link>
@@ -22,7 +22,7 @@ function AsidePerfil() {
       </Link>
       {esEmpresa ? (
         <Link to={'productos'} className={estilos.link} data-seleccionado={productosSeleccionado}>
-          Productos
+          Mis productos
         </Link>
       ) : (
         <Link to={'compras'} className={estilos.link} data-seleccionado={'sojdf'}>

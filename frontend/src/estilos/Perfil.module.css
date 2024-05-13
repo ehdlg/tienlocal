@@ -44,6 +44,10 @@
   transition: 0.3s ease-in;
 }
 
+.boton svg {
+  width: 24px;
+}
+
 .botonEliminar {
   background-color: #ff0000;
 
@@ -63,18 +67,25 @@
 .botonEditar:hover {
   background-color: var(--color-secundario);
 }
-.aside button {
+.link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  transition: 0.3s ease-in;
   border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
   background-color: var(--fondo);
 
   color: var(--texto);
 }
 
-.aside button[data-seleccionado='true'] {
+.link[data-seleccionado='true'] {
   background-color: #e5e7eb;
 }
 
-.aside button:hover {
+.link:hover {
   background-color: #e5e7eb;
 }
 
@@ -88,4 +99,38 @@
 
   padding-top: 1rem;
   margin-top: 1rem;
+}
+
+.tabla {
+  width: 100%;
+
+  margin-left: 1rem;
+}
+
+.encabezadoTabla {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.filaTabla {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.acciones {
+  display: flex;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.acciones button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: none;
+  color: #fff;
 }
