@@ -108,7 +108,7 @@ export default class Producto extends Base {
   }
 
   static async obtenerUnoDetalles(id) {
-    const consulta = `SELECT p.id, p.nombre, p.descripcion, p.precio, p.stock, p.imagen, e.nombre as empresa, c.nombre as categoria
+    const consulta = `SELECT p.id, p.nombre, p.descripcion, p.precio, p.stock, p.imagen, p.id_empresa, p.id_categoria, e.nombre as empresa, c.nombre as categoria
     FROM productos p
     JOIN empresas e ON e.id = p.id_empresa
     JOIN categorias c ON c.id = p.id_categoria
