@@ -44,6 +44,8 @@
 
   margin-top: 2rem;
 
+  font-size: 1rem;
+
   background-color: var(--color-secundario);
 
   font-weight: 700;
@@ -54,4 +56,50 @@
 .boton:hover,
 .boton:focus {
   background-color: var(--color-primario);
+}
+
+.inputNumber {
+  display: block;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  transition: all 0.2s ease;
+}
+
+.inputNumber:focus {
+  border-width: 2px;
+  border-color: var(--color-primario);
+}
+
+.select {
+  display: block;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-color: white;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23000000" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Agregar una flecha personalizada */
+  background-repeat: no-repeat;
+  background-position: right 10px top 50%;
+  padding-right: 30px;
+}
+
+.select:focus {
+  border-width: 2px;
+  border-color: var(--color-primario);
+}
+
+.subtitulo {
+  margin-top: 1rem;
+
+  font-size: 2rem;
 }
