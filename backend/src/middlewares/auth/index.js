@@ -159,8 +159,6 @@ export function comprobarPermisosEmpresa(req, res, next) {
 
     const id = Number(req.params.id);
 
-    console.log({ tokenVerificado, id });
-
     if (tokenVerificado.id != id || tokenVerificado.rol !== 'empresa') {
       throw new HTTPError({ mensaje: 'Acceso denegado', estado: 403 });
     }
