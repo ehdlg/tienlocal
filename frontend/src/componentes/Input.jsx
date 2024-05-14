@@ -1,6 +1,6 @@
 import estilosFormulario from '../estilos/Formulario.module.css';
 
-function Input({ textoLabel, id, type, name, defaultValue = '', required = false }) {
+function Input({ textoLabel, id, type, name, defaultValue = '', required = false, min, max }) {
   return (
     <label htmlFor={id} key={id} className={estilosFormulario.label}>
       {textoLabel}
@@ -12,6 +12,8 @@ function Input({ textoLabel, id, type, name, defaultValue = '', required = false
         id={id}
         key={name}
         required={required}
+        min={type == 'number' && min ? min : ''}
+        max={type == 'number' && max ? max : ''}
       />
     </label>
   );
