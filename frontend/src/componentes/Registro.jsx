@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Contexto } from '../context';
 import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { validarContrasena } from '../utils/validacion';
 import Formulario from './Formulario';
 import Input from './Input';
@@ -10,6 +12,11 @@ import estilosFormulario from '../estilos/Formulario.module.css';
 
 function Registro() {
   const [tipoRegistro, setTipoRegistro] = useState(TIPOS_USUARIO.usuario);
+  const { sesionIniciada } = useContext(Contexto);
+
+  if (sesionIniciada) {
+    return <Navigate to={'/perfil'} />;
+  }
 
   function actulizarTipoRegistro(nuevoTipo) {
     return function () {
