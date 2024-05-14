@@ -1,7 +1,5 @@
 import { Router } from 'express';
 import ProductoControlador from '../controladores/Producto.controlador.js';
-import { actualizarProductoReglas, crearProductoReglas } from '../middlewares/validacion/productos.js';
-import { validacion } from '../middlewares/validacion/index.js';
 
 const router = Router();
 
@@ -11,10 +9,6 @@ router.get('/precioMaximo', ProductoControlador.obtenerPrecioMaximo);
 
 router.get('/:id', ProductoControlador.obtenerUno);
 
-router.patch('/:id', actualizarProductoReglas, validacion, ProductoControlador.actualizar);
-
 router.get('/', ProductoControlador.obtenerTodos);
-
-router.post('/', crearProductoReglas, validacion, ProductoControlador.crear);
 
 export default router;

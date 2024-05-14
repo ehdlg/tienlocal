@@ -36,18 +36,6 @@ export default class ProductoControlador {
     }
   }
 
-  static async crear(req, res, next) {
-    const nuevoProducto = req.datosValidados;
-
-    try {
-      const productoCreado = await Producto.crear(nuevoProducto);
-
-      return res.status(201).json(productoCreado);
-    } catch (error) {
-      next(error);
-    }
-  }
-
   static async actualizar(req, res, next) {
     const { id, ...datosActualizacion } = req.datosValidados;
 
