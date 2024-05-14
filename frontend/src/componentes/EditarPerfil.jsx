@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Contexto } from '../context';
 import useGetDatos from '../hooks/useGetDatos';
-import { Navigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Formulario from './Formulario';
 import Input from './Input';
 import Loading from './Loading';
@@ -12,6 +12,7 @@ import estilos from '../estilos/Perfil.module.css';
 
 function EditarPerfil() {
   const { login, cerrarSesion } = useContext(Contexto);
+  const navigate = useNavigate();
   const { pathname } = useLocation();
 
   const editarContrasena = pathname.includes('contrasena');
@@ -86,7 +87,7 @@ function EditarPerfil() {
 
       cerrarSesion(true);
 
-      return <Navigate to='/' />;
+      return navigate('/');
     } catch (error) {
       console.error(error);
     }
