@@ -104,4 +104,21 @@ export default class EmpresaControlador {
 
     return res.json({ idEmpresa, idProducto });
   }
+
+  static async nuevoProductoEmpresa(req, res, next) {
+    try {
+      const { id, ...resto } = req.datosValidados;
+
+      const nuevoProducto = {
+        id_empresa: id,
+        ...resto,
+      };
+
+      const productoCreado = await Producto.crear(nuevoProducto);
+
+      return res.status(201).json(productoCreado);
+    } catch (error) {
+      throw error;
+    }
+  }
 }

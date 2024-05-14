@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { crearEmpresaReglas, actualizarEmpresaReglas } from '../middlewares/validacion/empresa.js';
+import { crearProductoReglas } from '../middlewares/validacion/productos.js';
 import EmpresaControlador from '../controladores/Empresa.controlador.js';
 import { loginReglas, validacion } from '../middlewares/validacion/index.js';
 import { generarHashedPassword } from '../middlewares/index.js';
@@ -16,13 +17,6 @@ router.get('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.
 
 router.get('/:id/productos', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.obtenerTodosEmpresa);
 
-router.delete(
-  '/:id/productos/:idProducto',
-  verificarToken,
-  comprobarPermisosEmpresa,
-  EmpresaControlador.borrarProductoEmpresa
-);
-
 router.patch(
   '/:id',
   verificarToken,
@@ -34,6 +28,22 @@ router.patch(
 );
 
 router.delete('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.borrar);
+
+router.delete(
+  '/:id/productos/:idProducto',
+  verificarToken,
+  comprobarPermisosEmpresa,
+  EmpresaControlador.borrarProductoEmpresa
+);
+
+router.post(
+  '/:id/productos',
+  verificarToken,
+  comprobarPermisosEmpresa,
+  crearProductoReglas,
+  validacion,
+  EmpresaControlador.nuevoProductoEmpresa
+);
 
 router.get('/', EmpresaControlador.obtenerTodos);
 
