@@ -189,7 +189,7 @@ export const INPUTS_NUEVO_PRODUCTO = [
   {
     name: 'descripcion',
     label: 'Descripción',
-    required: false,
+    required: true,
     type: 'text',
   },
   {
