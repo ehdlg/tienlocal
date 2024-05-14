@@ -178,3 +178,38 @@ export const INPUT_EDITAR_CONTRASENA = [
     type: 'password',
   },
 ];
+
+export const INPUTS_NUEVO_PRODUCTO = [
+  {
+    name: 'nombre',
+    label: 'Nombre del producto',
+    required: true,
+    type: 'text',
+  },
+  {
+    name: 'descripcion',
+    label: 'Descripción',
+    required: false,
+    type: 'text',
+  },
+  {
+    name: 'stock',
+    label: 'Stock',
+    required: true,
+    type: 'number',
+    min: 0,
+  },
+  {
+    name: 'precio',
+    label: 'Precio',
+    required: true,
+    type: 'number',
+    min: 0.01,
+  },
+  {
+    name: 'imagen',
+    type: 'text',
+    required: false,
+    label: 'Imagen (URL)',
+  },
+];
