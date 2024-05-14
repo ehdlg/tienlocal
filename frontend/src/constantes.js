@@ -204,7 +204,7 @@ export const INPUTS_NUEVO_PRODUCTO = [
     label: 'Precio',
     required: true,
     type: 'number',
-    min: 0.01,
+    min: 0,
   },
   {
     name: 'imagen',
