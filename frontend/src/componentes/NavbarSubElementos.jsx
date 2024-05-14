@@ -16,7 +16,7 @@ function NavbarSubelementos() {
           return (
             <li
               key={elemento.id}
-              onClick={cerrarSesion}
+              onClick={() => cerrarSesion(false)}
               className={`${estilos.submenuElemento} ${estilos.elementoNav}`}
             >
               {elemento.nombre}
