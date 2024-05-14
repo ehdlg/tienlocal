@@ -11,7 +11,7 @@ function DetalleProducto() {
 
   if (loading) return <Loading />;
 
-  if (error) return <h1>Error al intetar conectar con la base de datos</h1>;
+  if (error) return <h1>Error: {error}</h1>;
 
   return (
     <div className={estilos.wrapper}>

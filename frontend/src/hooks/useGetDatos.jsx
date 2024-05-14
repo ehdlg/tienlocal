@@ -39,6 +39,8 @@ function useGetDatos(recurso, limite = LIMITE_DEFECTO, offset = OFFSET_DEFECTO, 
 
     try {
       const respuesta = await fetch(URL, opcionesFetch);
+
+      if (respuesta.status === 404) return setError('El producto no existe');
       if (respuesta.status !== 200) return setError('Error al obtener el recurso');
 
       const datos = await respuesta.json();
