@@ -55,6 +55,8 @@ export const crearProductoReglas = (() => {
     body('id_categoria')
       .exists()
       .withMessage('Debes indicar el ID de la categoría')
+      .notEmpty()
+      .withMessage('Debes indicar una categoría')
       .bail()
       .isInt({ min: 1 })
       .withMessage('ID de categoría no válido')
