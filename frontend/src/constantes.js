@@ -198,6 +198,7 @@ export const INPUTS_NUEVO_PRODUCTO = [
     required: true,
     type: 'number',
     min: 0,
+    step: 1,
   },
   {
     name: 'precio',
@@ -205,6 +206,7 @@ export const INPUTS_NUEVO_PRODUCTO = [
     required: true,
     type: 'number',
     min: 0,
+    step: 0.01,
   },
   {
     name: 'imagen',
@@ -213,3 +215,10 @@ export const INPUTS_NUEVO_PRODUCTO = [
     label: 'Imagen (URL)',
   },
 ];
+
+export const INPUTS_EDITAR_PRODUCTO = INPUTS_NUEVO_PRODUCTO.map((input) => {
+  return {
+    ...input,
+    required: false,
+  };
+});
