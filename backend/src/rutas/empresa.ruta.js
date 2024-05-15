@@ -1,15 +1,10 @@
 import { Router } from 'express';
 import { crearEmpresaReglas, actualizarEmpresaReglas } from '../middlewares/validacion/empresa.js';
-import { crearProductoReglas } from '../middlewares/validacion/productos.js';
+import { crearProductoReglas, actualizarProductoReglas } from '../middlewares/validacion/productos.js';
 import EmpresaControlador from '../controladores/Empresa.controlador.js';
 import { loginReglas, validacion } from '../middlewares/validacion/index.js';
 import { generarHashedPassword } from '../middlewares/index.js';
-import {
-  comprobarEmpresaCredenciales,
-  comprobarPermisosAdministrador,
-  comprobarPermisosEmpresa,
-  verificarToken,
-} from '../middlewares/auth/index.js';
+import { comprobarEmpresaCredenciales, comprobarPermisosEmpresa, verificarToken } from '../middlewares/auth/index.js';
 
 const router = Router();
 
@@ -34,6 +29,15 @@ router.delete(
   verificarToken,
   comprobarPermisosEmpresa,
   EmpresaControlador.borrarProductoEmpresa
+);
+
+router.patch(
+  '/:id/productos/:idProducto',
+  verificarToken,
+  comprobarPermisosEmpresa,
+  actualizarProductoReglas,
+  validacion,
+  EmpresaControlador.editarProductoEmpresa
 );
 
 router.post(

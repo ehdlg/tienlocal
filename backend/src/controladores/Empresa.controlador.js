@@ -101,8 +101,6 @@ export default class EmpresaControlador {
     } catch (error) {
       next(error);
     }
-
-    return res.json({ idEmpresa, idProducto });
   }
 
   static async nuevoProductoEmpresa(req, res, next) {
@@ -118,7 +116,27 @@ export default class EmpresaControlador {
 
       return res.status(201).json(productoCreado);
     } catch (error) {
-      throw error;
+      next(error);
+    }
+  }
+
+  static async editarProductoEmpresa(req, res, next) {
+    const { datosValidados } = req;
+
+    try {
+      const { id, idProducto, ...nuevosDatos } = datosValidados;
+
+      console.log({ datosValidados });
+
+      if (Object.keys(nuevosDatos).length === 0) {
+        throw new HTTPError({ mensaje: 'No se han recibido datos para actualizar', estado: 400 });
+      }
+
+      const productoActualizado = await Producto.actualizar(idProducto, nuevosDatos);
+
+      return res.json(productoActualizado);
+    } catch (error) {
+      next(error);
     }
   }
 }
