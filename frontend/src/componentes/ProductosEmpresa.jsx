@@ -1,5 +1,6 @@
 import useGetDatos from '../hooks/useGetDatos';
 import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Contexto } from '../context';
 import Loading from './Loading';
 import { toast } from 'sonner';
@@ -75,7 +76,9 @@ function ProductosEmpresa() {
             <span>{producto.precio}</span>
             <span>{producto.stock}</span>
             <div className={estilos.acciones}>
-              <button className={estilos.botonEditar}>Editar</button>
+              <Link to={`/productos/${producto.id}/editar`}>
+                <button className={estilos.botonEditar}>Editar</button>
+              </Link>
               <button className={`${estilos.boton} ${estilos.botonEliminar}`} onClick={eliminarProducto(producto.id)}>
                 <TrashIcon />
                 Eliminar
