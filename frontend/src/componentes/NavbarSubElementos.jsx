@@ -1,11 +1,18 @@
 import { useContext } from 'react';
 import { Contexto } from '../context';
 import { Link } from 'react-router-dom';
+import { toast } from 'sonner';
 import { ELEMENTOS_SUBMENU_LOGEADO, ELEMENTOS_SUBMENU_NO_LOGEADO } from '../constantes';
 import estilos from '../estilos/Navbar.module.css';
 
 function NavbarSubelementos() {
   const { sesionIniciada, cerrarSesion } = useContext(Contexto);
+
+  function cerrarSesionPerfil() {
+    cerrarSesion();
+
+    toast.info('Sesión cerrada correctamente');
+  }
 
   const subelementos = sesionIniciada ? ELEMENTOS_SUBMENU_LOGEADO : ELEMENTOS_SUBMENU_NO_LOGEADO;
 
@@ -16,7 +23,7 @@ function NavbarSubelementos() {
           return (
             <li
               key={elemento.id}
-              onClick={() => cerrarSesion(false)}
+              onClick={cerrarSesionPerfil}
               className={`${estilos.submenuElemento} ${estilos.elementoNav}`}
             >
               {elemento.nombre}

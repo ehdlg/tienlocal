@@ -85,7 +85,7 @@ function EditarPerfil() {
 
       toast.info('Tu cuenta ha sido eliminada');
 
-      cerrarSesion(true);
+      cerrarSesion();
 
       return navigate('/');
     } catch (error) {
