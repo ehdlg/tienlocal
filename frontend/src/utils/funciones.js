@@ -46,3 +46,18 @@ export function validarNuevoProducto(datosFomulario) {
 
   return { errores, nuevoProducto };
 }
+
+export function formatearFecha(fecha) {
+  const fechaObjeto = new Date(fecha);
+
+  const dia = fechaObjeto.getDate();
+  const mes = fechaObjeto.toLocaleString('default', { month: 'long' });
+  const año = fechaObjeto.getFullYear();
+
+  const hora = fechaObjeto.getHours();
+  const minutos = fechaObjeto.getMinutes();
+
+  const fechaFormateada = `${dia} de ${mes} de ${año}, ${hora}:${minutos}`;
+
+  return fechaFormateada;
+}
