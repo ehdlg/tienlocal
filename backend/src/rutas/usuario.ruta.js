@@ -14,6 +14,15 @@ const router = Router();
 
 router.get('/:id', verificarToken, comprobarPermisosUsuario, UsuarioControlador.obtenerUno);
 
+router.get('/:id/compras', verificarToken, comprobarPermisosUsuario, UsuarioControlador.obtenerUsuarioCompras);
+
+router.get(
+  '/:id/compras/:idCompra',
+  verificarToken,
+  comprobarPermisosUsuario,
+  UsuarioControlador.obtenerUsuarioDetalleCompras
+);
+
 router.patch(
   '/:id',
   verificarToken,
@@ -30,12 +39,6 @@ router.get('/', verificarToken, comprobarPermisosAdministrador, UsuarioControlad
 
 router.post('/', crearUsuarioReglas, validacion, generarHashedPassword, UsuarioControlador.crear);
 
-router.post(
-  '/login',
-  loginReglas,
-  validacion,
-  comprobarUsuarioCredenciales,
-  UsuarioControlador.login
-);
+router.post('/login', loginReglas, validacion, comprobarUsuarioCredenciales, UsuarioControlador.login);
 
 export default router;

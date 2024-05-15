@@ -74,4 +74,28 @@ export default class UsuarioControlador {
   }
 
   static login = crearToken;
+
+  static async obtenerUsuarioCompras(req, res, next) {
+    const { id } = req.params;
+
+    try {
+      const compras = await Usuario.obtenerComprasUsuario(id);
+
+      return res.json(compras);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async obtenerUsuarioDetalleCompras(req, res, next) {
+    const { idCompra } = req.params;
+
+    try {
+      const detalleCompra = await Usuario.obtenerDetalleComprasUsuario(idCompra);
+
+      return res.json(detalleCompra);
+    } catch (error) {
+      next(error);
+    }
+  }
 }
