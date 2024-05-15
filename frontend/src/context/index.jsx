@@ -1,34 +1,21 @@
-import { createContext, useMemo, useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
-import { toast } from 'sonner';
+import { createContext, useMemo } from 'react';
+import useLogin from '../hooks/useLogin';
+import useCarrito from '../hooks/useCarrito';
 
 export const Contexto = createContext(null);
 
 export function ContextoProvider({ children }) {
-  const loginGuardado = JSON.parse(localStorage.getItem('login')) ?? null;
-
-  const [login, setLogin] = useState(loginGuardado);
-
-  function iniciarSesion(nuevoToken) {
-    const login = {
-      ...jwtDecode(nuevoToken),
-      token: nuevoToken,
-    };
-
-    setLogin(login);
-
-    localStorage.setItem('login', JSON.stringify(login));
-  }
-
-  function cerrarSesion(perfilEliminado = false) {
-    setLogin(null);
-
-    localStorage.removeItem('login');
-
-    if (perfilEliminado) return;
-
-    toast.info('Sesión cerrada correctamente');
-  }
+  const { login, iniciarSesion, cerrarSesion } = useLogin();
+  const {
+    carrito,
+    anadirCarrito,
+    eliminarProductoCarrito,
+    vaciarCarrito,
+    verificarProductoEnCarrito,
+    mostrarCarrito,
+    carritoAbierto,
+    modificarCantidadProducto,
+  } = useCarrito();
 
   const valoresContexto = useMemo(() => {
     return {
@@ -39,8 +26,28 @@ export function ContextoProvider({ children }) {
       esUsuario: null != login && login.rol == 'usuario',
       esEmpresa: null != login && login.rol == 'empresa',
       esAdmin: null != login && login.rol == 'admin',
+      carrito,
+      anadirCarrito,
+      eliminarProductoCarrito,
+      vaciarCarrito,
+      verificarProductoEnCarrito,
+      carritoAbierto,
+      mostrarCarrito,
+      modificarCantidadProducto,
     };
-  }, [login]);
+  }, [
+    login,
+    iniciarSesion,
+    cerrarSesion,
+    carrito,
+    anadirCarrito,
+    eliminarProductoCarrito,
+    vaciarCarrito,
+    verificarProductoEnCarrito,
+    carritoAbierto,
+    mostrarCarrito,
+    modificarCantidadProducto,
+  ]);
 
   return <Contexto.Provider value={valoresContexto}>{children}</Contexto.Provider>;
 }
