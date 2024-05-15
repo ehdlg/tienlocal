@@ -10,10 +10,15 @@ function AsidePerfil() {
 
   const editarContrasena = pathname.includes('contrasena');
   const productosSeleccionado = pathname.includes('productos');
+  const comprasSeleccionado = pathname.includes('compras');
 
   return (
     <aside className={estilos.aside}>
-      <Link to={''} className={estilos.link} data-seleccionado={!editarContrasena && !productosSeleccionado}>
+      <Link
+        to={''}
+        className={estilos.link}
+        data-seleccionado={!editarContrasena && !productosSeleccionado && !comprasSeleccionado}
+      >
         <UserIcon />
         Perfil
       </Link>
@@ -27,7 +32,7 @@ function AsidePerfil() {
           Mis productos
         </Link>
       ) : (
-        <Link to={'compras'} className={estilos.link} data-seleccionado={'sojdf'}>
+        <Link to={'compras'} className={estilos.link} data-seleccionado={comprasSeleccionado}>
           <ShoppingBagIcon />
           Mis compras
         </Link>
