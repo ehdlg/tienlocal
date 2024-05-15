@@ -86,6 +86,9 @@ function ProductosEmpresa() {
             </div>
           </div>
         ))}
+        <Link to={'/productos/nuevo'}>
+          <button className={`${estilos.boton}  ${estilos.botonCrear}`}>Crear nuevo producto</button>
+        </Link>
       </div>
     </>
   );

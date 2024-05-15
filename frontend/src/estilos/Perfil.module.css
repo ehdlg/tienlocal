@@ -58,15 +58,23 @@
   background-color: #cc0000;
 }
 
-.botonEditar {
+.botonEditar,
+.botonCrear {
   background-color: var(--color-primario);
 
   color: #fff;
 }
 
-.botonEditar:hover {
+.botonEditar:hover,
+.botonCrear:hover {
   background-color: var(--color-secundario);
 }
+
+.botonCrear {
+  margin-top: 2rem;
+  align-self: flex-end;
+}
+
 .link {
   display: flex;
   align-items: center;
