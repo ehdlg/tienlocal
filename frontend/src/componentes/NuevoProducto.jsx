@@ -96,6 +96,7 @@ function NuevoProducto() {
               textoLabel={input.label}
               type={input.type}
               required={input.required}
+              step={input.step}
               defaultValue={input.defaultValue}
             />
           );
