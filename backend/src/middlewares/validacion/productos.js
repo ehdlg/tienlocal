@@ -1,4 +1,5 @@
 import { body, param } from 'express-validator';
+import Producto from '../../modelos/Producto.js';
 import Empresa from '../../modelos/Empresa.js';
 import Categoria from '../../modelos/Categoria.js';
 
@@ -66,7 +67,25 @@ export const crearProductoReglas = (() => {
 
 export const actualizarProductoReglas = (() => {
   return [
-    param('id').exists().isInt().withMessage('El ID de producto introducido no es válido'),
+    param('id').exists().isInt().withMessage('El ID de empresa introducido no es válido'),
+
+    param('idProducto')
+      .exists()
+      .isInt()
+      .withMessage('El ID de producto introducido no es válido')
+      .custom(async (idProducto, { req }) => {
+        const { id } = req.params;
+
+        const producto = await Producto.obtenerUno(idProducto);
+
+        console.log(producto);
+
+        if (null == producto) throw new Error('El producto no existe');
+
+        console.log({ producto, id });
+
+        if (producto['id_empresa'] != id) throw new Error('El producto que intentas modificar no es de tu empresa');
+      }),
 
     body('nombre')
       .optional()
