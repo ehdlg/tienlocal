@@ -1,6 +1,16 @@
 import estilosFormulario from '../estilos/Formulario.module.css';
 
-function Input({ textoLabel, id, type, name, defaultValue = '', required = false, min = undefined, max = undefined }) {
+function Input({
+  textoLabel,
+  id,
+  type,
+  step,
+  name,
+  defaultValue = '',
+  required = false,
+  min = undefined,
+  max = undefined,
+}) {
   const estilosInput =
     type == 'text' || type == 'password' || type == 'email'
       ? estilosFormulario.inputText
@@ -18,6 +28,7 @@ function Input({ textoLabel, id, type, name, defaultValue = '', required = false
         required={required}
         min={min}
         max={max}
+        step={step}
       />
     </label>
   );
