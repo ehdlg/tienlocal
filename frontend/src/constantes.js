@@ -27,7 +27,7 @@ export const ELEMENTOS_NAV = [
   },
   {
     nombre: 'Sobre Tienlocal',
-    url: '/about',
+    url: '/sobre-nosotros',
     id: crypto.randomUUID(),
   },
 ];
