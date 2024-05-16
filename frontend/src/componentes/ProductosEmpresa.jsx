@@ -34,11 +34,8 @@ function ProductosEmpresa() {
 
         const respuesta = await fetch(URL, opcionesFetch);
 
-        const datos = await respuesta.json();
         if (respuesta.status != 200) {
           toast.error('Ocurrió un error al intentar borrar el producto');
-
-          console.log({ respuesta, datos });
 
           return;
         }
@@ -53,13 +50,10 @@ function ProductosEmpresa() {
       }
     };
   }
+
   if (loading || null == productos) return <Loading />;
 
   if (error) return <h1>Error: {error}</h1>;
-
-  const productosOrdenados = productos.sort((a, b) => {
-    return Number(a.precio) < Number(b.precio);
-  });
 
   return (
     <>
@@ -70,7 +64,7 @@ function ProductosEmpresa() {
           <span>Stock</span>
           <span>Acciones</span>
         </div>
-        {productosOrdenados.map((producto) => (
+        {productos.map((producto) => (
           <div key={producto.nombre} className={estilos.filaTabla}>
             <span>{producto.nombre}</span>
             <span>{producto.precio}</span>

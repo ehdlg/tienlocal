@@ -78,11 +78,7 @@ export const actualizarProductoReglas = (() => {
 
         const producto = await Producto.obtenerUno(idProducto);
 
-        console.log(producto);
-
         if (null == producto) throw new Error('El producto no existe');
-
-        console.log({ producto, id });
 
         if (producto['id_empresa'] != id) throw new Error('El producto que intentas modificar no es de tu empresa');
       }),

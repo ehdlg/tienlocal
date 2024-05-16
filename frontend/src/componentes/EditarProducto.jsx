@@ -50,8 +50,6 @@ function EditarProducto() {
       if (respuesta.status != 200) {
         toast.error('Ocurrió un  error, no se pudo editar el producto.');
 
-        console.log({ respuesta, datos });
-
         return;
       }
 

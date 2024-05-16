@@ -126,8 +126,6 @@ export default class EmpresaControlador {
     try {
       const { id, idProducto, ...nuevosDatos } = datosValidados;
 
-      console.log({ datosValidados });
-
       if (Object.keys(nuevosDatos).length === 0) {
         throw new HTTPError({ mensaje: 'No se han recibido datos para actualizar', estado: 400 });
       }
