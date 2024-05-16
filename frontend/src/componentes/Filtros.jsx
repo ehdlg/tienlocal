@@ -1,7 +1,8 @@
 import useGetDatos from '../hooks/useGetDatos';
 import { useState } from 'react';
-import estilos from '../estilos/Filtros.module.css';
+import Formulario from './Formulario';
 import { FILTROS_DEFECTO } from '../constantes';
+import estilos from '../estilos/Filtros.module.css';
 
 function Categorias({ categorias, categoriaSeleccionada }) {
   return (
@@ -107,7 +108,7 @@ function Filtros({ filtros, actualizarFiltros }) {
   if (errorCategoria || errorEmpresa) return <h2 style={{ textAlign: 'center' }}>error</h2>;
 
   return (
-    <form onSubmit={manejarFormulario}>
+    <Formulario manejarFormulario={manejarFormulario} estilo={estilos.formulario}>
       <fieldset className={estilos.wrapper}>
         <Filtros.Nombre valor={filtros.nombre} />
         <Filtros.Precio filtros={filtros} tipoPrecio={'precioMinimo'} precioMaximo={precioMaximo ?? 4000} />
@@ -116,12 +117,12 @@ function Filtros({ filtros, actualizarFiltros }) {
         <Filtros.Empresas empresas={empresas ?? []} empresaSeleccionada={filtros.empresa.toString()} />
       </fieldset>
       <div className={estilos.botonesFormulario}>
+        <button type='submit'>Establecer</button>
         <button type='button' onClick={reiniciarFiltros}>
           Reiniciar
         </button>
-        <button type='submit'>Establecer</button>
       </div>
-    </form>
+    </Formulario>
   );
 }
 
