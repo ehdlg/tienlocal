@@ -68,6 +68,8 @@ button {
 
   color: var(--texto);
 
+  background-color: var(--color-primario);
+
   padding: 12px 20px;
 
   font-weight: bold;
@@ -75,6 +77,10 @@ button {
   cursor: pointer;
 
   transition: 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--color-secundario);
 }
 
 label {
