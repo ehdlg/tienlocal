@@ -1,20 +1,19 @@
 import { useContext } from 'react';
 import { Contexto } from '../context';
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import estilos from '../estilos/Carrito.module.css';
 import ProductoCarrito from './ProductoCarrito';
+import estilos from '../estilos/Carrito.module.css';
 
 function Carrito() {
-  const { carrito, mostrarCarrito, carritoAbierto } = useContext(Contexto);
+  const { carrito, mostrarCarrito, carritoAbierto, vaciarCarrito } = useContext(Contexto);
 
   const claseCarrito = carritoAbierto ? `${estilos.wrapper} ${estilos.mostrar}` : estilos.wrapper;
-
-  const contenidoCarrito =
-    carrito.length > 0 ? (
-      carrito.map((producto) => <ProductoCarrito producto={producto} key={producto.id} />)
-    ) : (
-      <h4>No hay productos en el carrito</h4>
-    );
+  const carritoVacio = carrito.length === 0;
+  const contenidoCarrito = !carritoVacio ? (
+    carrito.map((producto) => <ProductoCarrito producto={producto} key={producto.id} />)
+  ) : (
+    <h4>No hay productos en el carrito</h4>
+  );
 
   return (
     <aside className={claseCarrito}>
@@ -24,7 +23,12 @@ function Carrito() {
         </span>
         {contenidoCarrito}
       </div>
-      <button>Ir al carrito</button>
+      <div className={estilos.acciones}>
+        <button className={estilos.botonIr}>Ir al carrito</button>
+        <button onClick={vaciarCarrito} className={`${estilos.botonVaciar} ${carritoVacio && estilos.escondido}`}>
+          Vaciar carrito
+        </button>
+      </div>
     </aside>
   );
 }
