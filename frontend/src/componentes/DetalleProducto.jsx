@@ -2,10 +2,14 @@ import useGetDatos from '../hooks/useGetDatos';
 import Loading from './Loading';
 import { useParams } from 'react-router-dom';
 import { TagIcon, BuildingStorefrontIcon, ShoppingCartIcon, CurrencyEuroIcon } from '@heroicons/react/24/solid';
+import { useContext } from 'react';
+import { Contexto } from '../context';
 import estilos from '../estilos/DetalleProducto.module.css';
 
 function DetalleProducto() {
   const { id } = useParams();
+
+  const { esUsuario, anadirCarrito } = useContext(Contexto);
 
   const { datos: producto, loading, error } = useGetDatos(`productos/${id}`);
 
@@ -15,9 +19,8 @@ function DetalleProducto() {
 
   return (
     <div className={estilos.wrapper}>
-      <div className='imagen'>
-        <div style={{ width: '200px', height: '200px', backgroundColor: 'blue' }}></div>
-        <img src='' alt='' />
+      <div className={estilos.imagen}>
+        <img src={producto.imagen} alt='' />
       </div>
 
       <div className={estilos.datos}>
@@ -35,10 +38,12 @@ function DetalleProducto() {
           <CurrencyEuroIcon />
           <h3>{producto.precio}</h3>
         </div>
-        <button className={estilos.boton}>
-          <ShoppingCartIcon />
-          Añadir al carrito
-        </button>
+        {esUsuario && (
+          <button onClick={anadirCarrito(producto)} className={estilos.boton}>
+            <ShoppingCartIcon />
+            Añadir al carrito
+          </button>
+        )}
       </div>
 
       <div className={estilos.descripcion}>

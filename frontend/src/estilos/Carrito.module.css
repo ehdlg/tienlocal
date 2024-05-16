@@ -1,0 +1,150 @@
+@import './variables.css';
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: min(100% - 3rem, 400px);
+
+  background-color: #fff;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  z-index: 1000;
+  overflow-y: auto;
+
+  transition: transform 0.3s ease;
+  transform: translateX(100%);
+}
+
+.wrapper.mostrar {
+  transform: translateX(0);
+}
+
+.contenido {
+  padding: 20px;
+}
+
+.cerrar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.cerrar svg {
+  width: 100%;
+}
+
+.titulo {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.lista {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nombre {
+  font-weight: bold;
+}
+
+.cantidadPrecio {
+  font-size: 14px;
+  color: #888;
+}
+
+.productoCarrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-secundario);
+  gap: 0.5rem;
+}
+
+.detallesProducto {
+  display: grid;
+  grid-template-columns: 40% auto;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.detallesProducto img {
+  max-width: 80%;
+  height: auto;
+}
+
+.detallesProducto h6 {
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.productoCarritoAcciones {
+  display: flex;
+  align-items: space-around;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.productoCarritoAcciones span {
+  font-size: 1.2rem;
+}
+
+.botonEliminar {
+  background-color: #ff0000;
+
+  color: #fff;
+  border: none;
+  border-radius: 0.2rem;
+
+  font-size: 1rem;
+
+  padding: 0.5rem 1rem;
+
+  cursor: pointer;
+}
+
+.botonEliminar:hover {
+  background-color: #d70000;
+}
+
+.limpiarCarrito {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.iconoSvg {
+  width: 1.5rem;
+}
+
+.cantidadAcciones {
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.svg {
+  cursor: pointer;
+}
+
+.svg.noPermitido {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.nombreCantidad {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

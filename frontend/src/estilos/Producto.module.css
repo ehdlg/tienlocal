@@ -6,6 +6,10 @@
   justify-content: center;
   align-items: center;
 
+  background-color: #fff;
+
+  padding: 0.5rem;
+
   border: 2px solid var(--color-secundario);
   border-radius: 0.5rem;
 
@@ -22,10 +26,57 @@
   transform: translateY(-5px);
 }
 
-.img {
-  object-fit: contain;
-  width: 300px;
-  height: 200px;
+.imagen {
+  display: flex;
+  place-content: center;
+}
 
-  background-color: #d3d3d3d3;
+.imagen img {
+  max-width: 50%;
+}
+
+.nombre {
+  align-self: center;
+
+  margin-bottom: 2rem;
+}
+
+.infoProducto {
+  display: flex;
+  flex-direction: column;
+
+  width: 80%;
+
+  padding: 0.5rem;
+}
+
+.botonCarrito {
+  background-color: transparent;
+  border: 1px solid var(--color-secundario);
+
+  transition: 0.3s ease-in-out;
+}
+
+.botonCarrito svg {
+  width: 24px;
+
+  transition: 0.2s ease-in;
+}
+
+.botonCarrito:hover {
+  border-color: transparent;
+
+  background-color: var(--color-secundario);
+}
+
+.botonCarrito:hover > svg {
+  transform: rotate(-10deg);
+}
+
+.precioCarrito {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }

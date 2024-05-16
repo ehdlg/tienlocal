@@ -74,3 +74,19 @@
   margin: 0;
   list-style: none;
 }
+
+.carrito {
+  list-style-type: none;
+
+  cursor: pointer;
+}
+
+.carrito svg {
+  width: 100%;
+
+  transition: 0.2s ease;
+}
+
+.carrito:hover svg {
+  transform: rotate(-15deg);
+}

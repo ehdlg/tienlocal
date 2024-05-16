@@ -83,3 +83,14 @@ svg {
 .boton svg {
   width: 100%;
 }
+
+.imagen {
+  display: flex;
+
+  place-content: center;
+}
+
+.imagen img {
+  margin: auto;
+  max-width: 80%;
+}
