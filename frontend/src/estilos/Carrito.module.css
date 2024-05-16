@@ -100,22 +100,25 @@
   font-size: 1.2rem;
 }
 
-.botonEliminar {
+.botonEliminar,
+.botonVaciar {
   background-color: #ff0000;
 
   color: #fff;
   border: none;
-  border-radius: 0.2rem;
-
-  font-size: 1rem;
 
   padding: 0.5rem 1rem;
 
   cursor: pointer;
 }
 
-.botonEliminar:hover {
+.botonEliminar:hover,
+.botonVaciar:hover {
   background-color: #d70000;
+}
+
+.botonVaciar.escondido {
+  opacity: 0;
 }
 
 .limpiarCarrito {
@@ -147,4 +150,20 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.botonIr {
+  background-color: var(--color-primario);
+
+  transition: 0.3s ease-in;
+}
+
+.botonIr:hover {
+  background-color: var(--color-secundario);
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
