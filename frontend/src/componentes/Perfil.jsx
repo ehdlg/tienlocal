@@ -12,7 +12,7 @@ function Perfil() {
   }
 
   if (login.rol == 'admin') {
-    return <Navigate to={'/dashboard'} />;
+    return <Navigate to={'/admin'} />;
   }
 
   return (
