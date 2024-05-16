@@ -98,4 +98,15 @@ export default class UsuarioControlador {
       next(error);
     }
   }
+
+  static async obtenerCantidadUsuario(req, res, next) {
+    try {
+      const [resultado] = await Usuario.obtenerCantidad();
+      const [cantidad] = Object.values(resultado);
+
+      return res.json(cantidad);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

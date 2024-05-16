@@ -5,6 +5,7 @@ import rutaEmpresas from './empresa.ruta.js';
 import rutaCategorias from './categoria.ruta.js';
 import rutaValoraciones from './valoracion.ruta.js';
 import rutaAdministrador from './administrador.ruta.js';
+import rutaCompra from './compra.ruta.js';
 
 const router = Router();
 
@@ -21,6 +22,8 @@ router.use('/empresas/', rutaEmpresas);
 router.use('/categorias/', rutaCategorias);
 
 router.use('/valoraciones/', rutaValoraciones);
+
+router.use('/compras/', rutaCompra);
 
 router.use('/administrador/', rutaAdministrador);
 

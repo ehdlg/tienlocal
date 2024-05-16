@@ -12,6 +12,8 @@ import {
 
 const router = Router();
 
+router.get('/cantidad', verificarToken, comprobarPermisosAdministrador, UsuarioControlador.obtenerCantidadUsuario);
+
 router.get('/:id', verificarToken, comprobarPermisosUsuario, UsuarioControlador.obtenerUno);
 
 router.get('/:id/compras', verificarToken, comprobarPermisosUsuario, UsuarioControlador.obtenerUsuarioCompras);

@@ -4,9 +4,16 @@ import { crearProductoReglas, actualizarProductoReglas } from '../middlewares/va
 import EmpresaControlador from '../controladores/Empresa.controlador.js';
 import { loginReglas, validacion } from '../middlewares/validacion/index.js';
 import { generarHashedPassword } from '../middlewares/index.js';
-import { comprobarEmpresaCredenciales, comprobarPermisosEmpresa, verificarToken } from '../middlewares/auth/index.js';
+import {
+  comprobarEmpresaCredenciales,
+  comprobarPermisosAdministrador,
+  comprobarPermisosEmpresa,
+  verificarToken,
+} from '../middlewares/auth/index.js';
 
 const router = Router();
+
+router.get('/cantidad', verificarToken, comprobarPermisosAdministrador, EmpresaControlador.obtenerCantidad);
 
 router.get('/:id', verificarToken, comprobarPermisosEmpresa, EmpresaControlador.obtenerUno);
 

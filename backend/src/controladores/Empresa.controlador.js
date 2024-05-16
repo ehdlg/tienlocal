@@ -137,4 +137,15 @@ export default class EmpresaControlador {
       next(error);
     }
   }
+
+  static async obtenerCantidad(req, res, next) {
+    try {
+      const [resultado] = await Empresa.obtenerCantidad();
+      const [cantidad] = Object.values(resultado);
+
+      return res.json(cantidad);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

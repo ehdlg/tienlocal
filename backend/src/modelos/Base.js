@@ -45,8 +45,7 @@ export default class Base {
     try {
       const [fila] = await this.db.query(consulta, [nuevoRegistro]);
 
-      fila.info =
-        fila.affectedRows === 1 ? 'Registro creado correctamente' : 'No se pudo crear el registro';
+      fila.info = fila.affectedRows === 1 ? 'Registro creado correctamente' : 'No se pudo crear el registro';
 
       return fila;
     } catch (error) {
@@ -60,10 +59,7 @@ export default class Base {
     try {
       const [fila] = await this.db.query(consulta, [datos, id]);
 
-      fila.info =
-        fila.affectedRows === 1
-          ? 'Registro actualizado correctamente'
-          : 'No hubo nada que actualizar.';
+      fila.info = fila.affectedRows === 1 ? 'Registro actualizado correctamente' : 'No hubo nada que actualizar.';
 
       return fila;
     } catch (error) {
