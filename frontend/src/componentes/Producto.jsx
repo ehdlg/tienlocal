@@ -25,7 +25,11 @@ function Producto({ producto }) {
 
         <div className={estilos.precioCarrito}>
           <h4>{producto.precio}€</h4>
-          <button className={estilos.botonCarrito} onClick={anadirCarrito(producto)} disabled={!esUsuario}>
+          <button
+            className={`${estilos.botonCarrito} ${!esUsuario && estilos.desactivado}`}
+            onClick={anadirCarrito(producto)}
+            disabled={!esUsuario}
+          >
             <ShoppingCartIcon />
           </button>
         </div>

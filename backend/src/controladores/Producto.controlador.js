@@ -36,6 +36,16 @@ export default class ProductoControlador {
     }
   }
 
+  static async obtenerTodosDetalles(req, res, next) {
+    try {
+      const productos = await Producto.obtenerTodosDetalles();
+
+      return res.json(productos);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   static async actualizar(req, res, next) {
     const { id, ...datosActualizacion } = req.datosValidados;
 

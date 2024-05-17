@@ -57,19 +57,23 @@
   transition: 0.3s ease-in-out;
 }
 
+.botonCarrito.desactivado {
+  opacity: 0.3;
+}
+
 .botonCarrito svg {
   width: 24px;
 
   transition: 0.2s ease-in;
 }
 
-.botonCarrito:hover {
+.botonCarrito:not(.desactivado):hover {
   border-color: transparent;
 
   background-color: var(--color-secundario);
 }
 
-.botonCarrito:hover > svg {
+.botonCarrito:not(.desactivado):hover > svg {
   transform: rotate(-10deg);
 }
 

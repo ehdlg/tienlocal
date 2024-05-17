@@ -4,7 +4,7 @@ export default class Usuario extends Login {
   static tabla = 'usuarios';
 
   static async obtenerComprasUsuario(idUsuario) {
-    const consulta = 'SELECT id, fecha FROM compras WHERE id_usuario = ?';
+    const consulta = 'SELECT id, fecha FROM compras WHERE id_usuario = ? ORDER BY fecha DESC';
 
     try {
       const [compras] = await this.db.execute(consulta, [idUsuario]);

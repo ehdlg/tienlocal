@@ -107,6 +107,21 @@ export default class Producto extends Base {
     }
   }
 
+  static async obtenerTodosDetalles() {
+    const consulta = `SELECT p.id, p.nombre, p.descripcion, p.precio, p.stock, p.imagen, p.id_empresa, p.id_categoria, e.nombre as empresa, c.nombre as categoria
+    FROM productos p
+    JOIN empresas e ON e.id = p.id_empresa
+    JOIN categorias c ON c.id = p.id_categoria`;
+
+    try {
+      const [productos] = await this.db.execute(consulta);
+
+      return productos || null;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   static async obtenerUnoDetalles(id) {
     const consulta = `SELECT p.id, p.nombre, p.descripcion, p.precio, p.stock, p.imagen, p.id_empresa, p.id_categoria, e.nombre as empresa, c.nombre as categoria
     FROM productos p

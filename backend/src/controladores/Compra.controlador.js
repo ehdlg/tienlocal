@@ -21,4 +21,18 @@ export default class CompraControlador {
       next(error);
     }
   }
+
+  static async comprar(req, res, next) {
+    const { id } = req.params;
+    const { detalles } = req.body;
+
+    console.log(detalles);
+    try {
+      const resultado = await Compra.comprar(id, detalles);
+
+      return res.json(resultado);
+    } catch (error) {
+      next(error);
+    }
+  }
 }

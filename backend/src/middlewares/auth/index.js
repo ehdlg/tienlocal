@@ -160,7 +160,7 @@ export function comprobarPermisosEmpresa(req, res, next) {
     const id = Number(req.params.id);
 
     if (tokenVerificado.id != id || tokenVerificado.rol !== 'empresa') {
-      throw new HTTPError({ mensaje: 'Acceso denegado', estado: 403 });
+      throw new HTTPError({ mensaje: 'Acceso prohibido', estado: 403 });
     }
 
     return next();

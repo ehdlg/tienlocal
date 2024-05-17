@@ -75,12 +75,14 @@ export const actualizarProductoReglas = (() => {
       .withMessage('El ID de producto introducido no es válido')
       .custom(async (idProducto, { req }) => {
         const { id } = req.params;
+        const { tokenVerificado } = req;
 
         const producto = await Producto.obtenerUno(idProducto);
 
         if (null == producto) throw new Error('El producto no existe');
 
-        if (producto['id_empresa'] != id) throw new Error('El producto que intentas modificar no es de tu empresa');
+        if (tokenVerificado.rol != 'admin' && producto['id_empresa'] != id)
+          throw new Error('El producto que intentas modificar no es de tu empresa');
       }),
 
     body('nombre')
