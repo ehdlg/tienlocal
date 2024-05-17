@@ -13,7 +13,9 @@
 .boton {
   color: var(--texto);
 
-  border: 2px solid transparent;
+  background-color: #fff;
+
+  border: 2px solid var(--color-primario);
 
   transition: 0.2s ease-in;
 }
@@ -22,13 +24,13 @@
 .boton:focus {
   border-color: var(--color-primario);
 
-  background-color: #d0d0d7;
+  background-color: var(--color-secundario);
 }
 
 .boton[data-seleccionado='true'] {
-  border: 2px solid var(--color-primario);
+  border: 2px solid transparent;
 
-  background-color: #d0d0d7;
+  background-color: var(--color-primario);
 }
 
 .redireccion {
