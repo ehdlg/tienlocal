@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 
 function EditarProducto() {
   const { id } = useParams();
-  const { login, sesionIniciada, esUsuario } = useContext(Contexto);
+  const { login, sesionIniciada, esUsuario, esAdmin } = useContext(Contexto);
 
   async function editarProducto(e) {
     e.preventDefault();
@@ -66,9 +66,9 @@ function EditarProducto() {
 
   if (errorProducto) return <h1>Error: {errorProducto}</h1>;
 
-  const esPropietario = sesionIniciada && !esUsuario && producto['id_empresa'] == login.id;
+  const esPropietario = (sesionIniciada && !esUsuario && producto['id_empresa'] == login.id) || esAdmin;
 
-  if (!esPropietario) {
+  if (!esPropietario || !esAdmin) {
     toast.info('No tienes permisos para editar este producto');
 
     return <Navigate to={'/perfil'} />;

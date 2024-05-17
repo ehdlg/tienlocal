@@ -16,7 +16,7 @@ function Carrito() {
   );
 
   return (
-    <aside className={claseCarrito}>
+    <div className={claseCarrito}>
       <div className={estilos.contenido}>
         <span className={estilos.cerrar} onClick={mostrarCarrito}>
           <XMarkIcon />
@@ -29,7 +29,7 @@ function Carrito() {
           Vaciar carrito
         </button>
       </div>
-    </aside>
+    </div>
   );
 }
 

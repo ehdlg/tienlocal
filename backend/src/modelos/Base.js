@@ -107,4 +107,16 @@ export default class Base {
       throw error;
     }
   }
+
+  static async obtenerUltimoRegistro() {
+    const consulta = `SELECT creado FROM ${this.tabla}  ORDER BY creado DESC LIMIT 1`;
+
+    try {
+      const [resultado] = await this.db.query(consulta);
+
+      return resultado;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

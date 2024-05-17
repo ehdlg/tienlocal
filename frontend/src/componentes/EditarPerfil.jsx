@@ -99,15 +99,17 @@ function EditarPerfil() {
 
   if (error) return <h1>Error: {error}</h1>;
 
-  const inputsDatos = Object.entries(datos).map(([clave, valor]) => {
-    return {
-      name: clave,
-      defaultValue: valor,
-      type: 'text',
-      required: false,
-      label: clave,
-    };
-  });
+  const inputsDatos = Object.entries(datos)
+    .filter(([clave]) => clave != 'creado')
+    .map(([clave, valor]) => {
+      return {
+        name: clave,
+        defaultValue: valor,
+        type: 'text',
+        required: false,
+        label: clave,
+      };
+    });
 
   const inputs = editarContrasena ? INPUT_EDITAR_CONTRASENA : inputsDatos;
 

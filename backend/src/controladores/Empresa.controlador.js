@@ -8,7 +8,7 @@ export default class EmpresaControlador {
     try {
       const empresas = await Empresa.obtenerTodos();
 
-      const infoEmpresas = empresas.map(({ contrasena, id: idEmpresa, ...infoEmpresa }) => infoEmpresa);
+      const infoEmpresas = empresas.map(({ contrasena, ...infoEmpresa }) => infoEmpresa);
 
       return res.json(infoEmpresas);
     } catch (error) {

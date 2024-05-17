@@ -7,7 +7,7 @@ export default class UsuarioControlador {
     try {
       const usuarios = await Usuario.obtenerTodos();
 
-      const infoUsuarios = usuarios.map(({ contrasena, id: idUsuario, ...infoUsuario }) => infoUsuario);
+      const infoUsuarios = usuarios.map(({ contrasena, ...infoUsuario }) => infoUsuario);
 
       return res.json(infoUsuarios);
     } catch (error) {

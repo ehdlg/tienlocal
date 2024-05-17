@@ -1,18 +1,16 @@
 import useGetDatos from '../hooks/useGetDatos';
 import { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Contexto } from '../context';
 import Loading from './Loading';
 import { toast } from 'sonner';
 import { API_URL } from '../constantes';
 import Tabla from './Tabla';
-import estilos from '../estilos/Perfil.module.css';
 
-function ProductosEmpresa() {
+function ProductosAdministrador() {
   const { login } = useContext(Contexto);
   const [productos, setProductos] = useState(null);
 
-  let { datos, error, loading } = useGetDatos(`empresas/${login.id}/productos`);
+  const { datos, error, loading } = useGetDatos('productos/detalles');
 
   useEffect(() => {
     if (null == datos) return;
@@ -22,7 +20,7 @@ function ProductosEmpresa() {
 
   function eliminarProducto(id) {
     return async function () {
-      const URL = `${API_URL}/empresas/${login.id}/productos/${id}`;
+      const URL = `${API_URL}/productos/${id}`;
       const opcionesFetch = {
         method: 'DELETE',
         headers: {
@@ -51,27 +49,25 @@ function ProductosEmpresa() {
     };
   }
 
-  if (loading || null == productos) return <Loading />;
-
   if (error) return <h1>Error: {error}</h1>;
+
+  if (loading || null == productos) return <Loading />;
 
   const mostrarProductos = productos.map((producto) => {
     return {
+      id: producto.id,
       nombre: producto.nombre,
       precio: producto.precio,
       stock: producto.stock,
+      empresa: producto.empresa,
     };
   });
 
   return (
     <>
-      <Tabla productos={mostrarProductos} eliminarProducto={eliminarProducto}>
-        <Link to={'/productos/nuevo'}>
-          <button className={`${estilos.boton}  ${estilos.botonCrear}`}>Crear nuevo producto</button>
-        </Link>
-      </Tabla>
+      <Tabla datos={mostrarProductos} eliminar={eliminarProducto} esProducto={true} />
     </>
   );
 }
 
-export default ProductosEmpresa;
+export default ProductosAdministrador;

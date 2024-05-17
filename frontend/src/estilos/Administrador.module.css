@@ -1,0 +1,32 @@
+@import './variables.css';
+
+.boton {
+  color: var(--texto);
+
+  background-color: #fff;
+
+  border: 2px solid var(--color-primario);
+
+  transition: 0.2s ease-in;
+}
+
+.boton:hover,
+.boton:focus {
+  border-color: var(--color-primario);
+
+  background-color: var(--color-secundario);
+}
+
+.boton[data-seleccionado='true'] {
+  border: 2px solid transparent;
+
+  background-color: var(--color-primario);
+}
+
+.links {
+  display: flex;
+
+  gap: 1rem;
+
+  margin: 2rem;
+}

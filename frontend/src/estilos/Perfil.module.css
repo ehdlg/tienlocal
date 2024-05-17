@@ -116,6 +116,8 @@
   opacity: 1;
 
   transition: 0.3s ease-in;
+
+  text-align: center;
 }
 
 .tabla.cerrado {
@@ -124,22 +126,25 @@
 
 .encabezadoTabla {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
   font-weight: bold;
+  text-transform: capitalize;
+
   border-bottom: 1px solid #ccc;
   padding: 10px 0;
 }
 
 .filaTabla {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   border-bottom: 1px solid #eee;
   padding: 10px 0;
 }
 
 .acciones {
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }
