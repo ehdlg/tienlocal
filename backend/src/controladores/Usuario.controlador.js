@@ -3,6 +3,13 @@ import { crearToken } from '../middlewares/auth/index.js';
 import { HTTPError } from '../utils/errores/index.js';
 
 export default class UsuarioControlador {
+  /**
+   * Obtiene todos los usuarios.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con la información de los usuarios.
+   */
   static async obtenerTodos(req, res, next) {
     try {
       const usuarios = await Usuario.obtenerTodos();
@@ -15,6 +22,13 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Obtiene un usuario por su ID.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con la información del usuario.
+   */
   static async obtenerUno(req, res, next) {
     const { id } = req.params;
 
@@ -31,6 +45,13 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Crea un nuevo usuario.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el usuario creado.
+   */
   static async crear(req, res, next) {
     const nuevoUsuario = req.datosValidados;
 
@@ -43,6 +64,13 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Actualiza un usuario existente.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el usuario actualizado.
+   */
   static async actualizar(req, res, next) {
     const { id, ...datosActualizacion } = req.datosValidados;
 
@@ -59,6 +87,13 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Elimina un usuario existente.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el usuario eliminado.
+   */
   static async borrar(req, res, next) {
     const { id } = req.params;
 
@@ -73,8 +108,18 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Inicia sesión de usuario y genera un token JWT.
+   */
   static login = crearToken;
 
+  /**
+   * Obtiene las compras de un usuario por su ID.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con las compras del usuario.
+   */
   static async obtenerUsuarioCompras(req, res, next) {
     const { id } = req.params;
 
@@ -87,6 +132,13 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Obtiene el detalle de las compras de un usuario por el ID de la compra.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el detalle de la compra del usuario.
+   */
   static async obtenerUsuarioDetalleCompras(req, res, next) {
     const { idCompra } = req.params;
 
@@ -99,6 +151,13 @@ export default class UsuarioControlador {
     }
   }
 
+  /**
+   * Obtiene la cantidad total de usuarios.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con la cantidad total de usuarios.
+   */
   static async obtenerCantidadUsuario(req, res, next) {
     try {
       const [resultado] = await Usuario.obtenerCantidad();

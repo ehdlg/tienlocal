@@ -2,6 +2,7 @@ import { body, param } from 'express-validator';
 import { comprobarEmail, comprobarContrasenaRepetida, comprobarNuevaContrasenaUsuario } from './utils.js';
 import { regexContrasena } from './constantes.js';
 
+// Reglas de validación para la creación de un usuario
 export const crearUsuarioReglas = (() => {
   return [
     body('nombre')
@@ -34,6 +35,7 @@ export const crearUsuarioReglas = (() => {
   ];
 })();
 
+// Reglas de validación para la actualización de un usuario
 export const actualizarUsuarioReglas = (() => {
   return [
     param('id').exists().isInt().withMessage('El ID no es correcto, debe ser un entero mayor a 0.'),
@@ -60,6 +62,6 @@ export const actualizarUsuarioReglas = (() => {
       .bail()
       .custom(comprobarContrasenaRepetida)
       .bail()
-      .custom(comprobarNuevaContrasenaUsuario),
+      .custom(comprobarNuevaContrasenaUsuario), // Comprueba si la contraseña es nueva
   ];
 })();

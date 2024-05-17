@@ -1,7 +1,17 @@
 import Producto from '../modelos/Producto.js';
 import { HTTPError } from '../utils/errores/index.js';
 
+/**
+ * Controlador para manejar las operaciones relacionadas con los productos.
+ */
 export default class ProductoControlador {
+  /**
+   * Obtiene todos los productos filtrados según los parámetros proporcionados.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con los productos filtrados.
+   */
   static async obtenerTodos(req, res, next) {
     try {
       const { nombre, precioMinimo, precioMaximo, categoria, empresa, limite, offset } = req.query;
@@ -22,6 +32,13 @@ export default class ProductoControlador {
     }
   }
 
+  /**
+   * Obtiene los detalles de un producto específico.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con los detalles del producto.
+   */
   static async obtenerUno(req, res, next) {
     const { id } = req.params;
 
@@ -36,6 +53,13 @@ export default class ProductoControlador {
     }
   }
 
+  /**
+   * Obtiene los detalles de todos los productos.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con los detalles de todos los productos.
+   */
   static async obtenerTodosDetalles(req, res, next) {
     try {
       const productos = await Producto.obtenerTodosDetalles();
@@ -46,6 +70,13 @@ export default class ProductoControlador {
     }
   }
 
+  /**
+   * Actualiza un producto existente.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el producto actualizado.
+   */
   static async actualizar(req, res, next) {
     const { id, ...datosActualizacion } = req.datosValidados;
 
@@ -62,6 +93,13 @@ export default class ProductoControlador {
     }
   }
 
+  /**
+   * Elimina un producto existente.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el producto eliminado.
+   */
   static async borrar(req, res, next) {
     const { id } = req.params;
 
@@ -76,6 +114,13 @@ export default class ProductoControlador {
     }
   }
 
+  /**
+   * Obtiene la cantidad de productos filtrados según los parámetros proporcionados.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con la cantidad de productos.
+   */
   static async obtenerCantidad(req, res, next) {
     const { nombre, precioMinimo, precioMaximo, categoria, empresa } = req.query;
 
@@ -97,6 +142,13 @@ export default class ProductoControlador {
     }
   }
 
+  /**
+   * Obtiene el precio máximo de los productos.
+   * @param {object} req - Objeto de solicitud HTTP.
+   * @param {object} res - Objeto de respuesta HTTP.
+   * @param {function} next - Función de middleware para pasar el control al siguiente middleware.
+   * @returns {object} - Respuesta JSON con el precio máximo.
+   */
   static async obtenerPrecioMaximo(req, res, next) {
     try {
       const [resultado] = await Producto.obtenerPrecioMaximo();

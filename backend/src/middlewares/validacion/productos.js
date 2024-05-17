@@ -3,6 +3,7 @@ import Producto from '../../modelos/Producto.js';
 import Empresa from '../../modelos/Empresa.js';
 import Categoria from '../../modelos/Categoria.js';
 
+// Función asincrónica que verifica si existe una empresa con el ID proporcionado
 async function existeEmpresa(id) {
   try {
     const empresa = await Empresa.obtenerUno(id);
@@ -13,6 +14,7 @@ async function existeEmpresa(id) {
   }
 }
 
+// Función asincrónica que verifica si existe una categoría con el ID proporcionado
 async function existeCategoria(id) {
   try {
     const categoria = await Categoria.obtenerUno(id);
@@ -23,6 +25,7 @@ async function existeCategoria(id) {
   }
 }
 
+// Reglas de validación para la creación de un producto
 export const crearProductoReglas = (() => {
   return [
     param('id')
@@ -61,10 +64,11 @@ export const crearProductoReglas = (() => {
       .bail()
       .isInt({ min: 1 })
       .withMessage('ID de categoría no válido')
-      .custom(existeCategoria),
+      .custom(existeCategoria), // Verifica si la categoría con el ID proporcionado existe
   ];
 })();
 
+// Reglas de validación para la actualización de un producto
 export const actualizarProductoReglas = (() => {
   return [
     param('id').exists().isInt().withMessage('El ID de empresa introducido no es válido'),

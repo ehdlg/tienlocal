@@ -1,11 +1,16 @@
-import Administrador from '../../modelos/Administrador.js';
-import Usuario from '../../modelos/Usuario.js';
-import Empresa from '../../modelos/Empresa.js';
-import Producto from '../../modelos/Producto.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { HTTPError } from '../../utils/errores/index.js';
+import Administrador from '../../modelos/Administrador.js';
+import Usuario from '../../modelos/Usuario.js';
+import Empresa from '../../modelos/Empresa.js';
 
+/**
+ * Middleware para comprobar las credenciales del administrador.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export async function comprobarAdministradorCredenciales(req, res, next) {
   const { email, contrasena } = req.datosValidados;
 
@@ -35,6 +40,12 @@ export async function comprobarAdministradorCredenciales(req, res, next) {
   }
 }
 
+/**
+ * Middleware para comprobar las credenciales del usuario.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export async function comprobarUsuarioCredenciales(req, res, next) {
   try {
     const { email, contrasena } = req.datosValidados;
@@ -61,6 +72,12 @@ export async function comprobarUsuarioCredenciales(req, res, next) {
   }
 }
 
+/**
+ * Middleware para comprobar las credenciales de la empresa.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export async function comprobarEmpresaCredenciales(req, res, next) {
   try {
     const { email, contrasena } = req.datosValidados;
@@ -87,6 +104,12 @@ export async function comprobarEmpresaCredenciales(req, res, next) {
   }
 }
 
+/**
+ * Función para crear un token JWT basado en las credenciales proporcionadas.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export function crearToken(req, res, next) {
   try {
     const { login } = req;
@@ -100,6 +123,12 @@ export function crearToken(req, res, next) {
   }
 }
 
+/**
+ * Middleware para verificar un token JWT en la solicitud.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export function verificarToken(req, res, next) {
   try {
     if (null == req.headers['authorization']) throw new HTTPError({ mensaje: 'Acceso no autorizado', estado: 401 });
@@ -119,6 +148,12 @@ export function verificarToken(req, res, next) {
   }
 }
 
+/**
+ * Middleware para comprobar los permisos de un administrador en la solicitud.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export function comprobarPermisosAdministrador(req, res, next) {
   try {
     const { tokenVerificado } = req;
@@ -133,6 +168,12 @@ export function comprobarPermisosAdministrador(req, res, next) {
   }
 }
 
+/**
+ * Middleware para comprobar los permisos de un usuario en la solicitud.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export function comprobarPermisosUsuario(req, res, next) {
   try {
     const { tokenVerificado } = req;
@@ -151,6 +192,12 @@ export function comprobarPermisosUsuario(req, res, next) {
   }
 }
 
+/**
+ * Middleware para comprobar los permisos de una empresa en la solicitud.
+ * @param {Object} req - Objeto de solicitud HTTP.
+ * @param {Object} res - Objeto de respuesta HTTP.
+ * @param {Function} next - Función para pasar el control al siguiente middleware.
+ */
 export function comprobarPermisosEmpresa(req, res, next) {
   try {
     const { tokenVerificado } = req;

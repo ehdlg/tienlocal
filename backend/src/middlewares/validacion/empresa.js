@@ -7,6 +7,10 @@ import {
 } from './utils.js';
 import { regexContrasena } from './constantes.js';
 
+/**
+ * Reglas de validación para crear una nueva empresa.
+ * Estas reglas se aplicarán a los datos recibidos en la solicitud de creación de empresa.
+ */
 export const crearEmpresaReglas = (() => {
   return [
     body('nombre')
@@ -48,6 +52,10 @@ export const crearEmpresaReglas = (() => {
   ];
 })();
 
+/**
+ * Reglas de validación para actualizar una empresa existente.
+ * Estas reglas se aplicarán a los datos recibidos en la solicitud de actualización de empresa.
+ */
 export const actualizarEmpresaReglas = (() => {
   return [
     param('id')
