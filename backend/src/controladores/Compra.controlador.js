@@ -26,7 +26,6 @@ export default class CompraControlador {
     const { id } = req.params;
     const { detalles } = req.body;
 
-    console.log(detalles);
     try {
       const resultado = await Compra.comprar(id, detalles);
 

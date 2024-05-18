@@ -1,7 +1,6 @@
 import Administrador from '../../modelos/Administrador.js';
 import Usuario from '../../modelos/Usuario.js';
 import Empresa from '../../modelos/Empresa.js';
-import Producto from '../../modelos/Producto.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { HTTPError } from '../../utils/errores/index.js';
