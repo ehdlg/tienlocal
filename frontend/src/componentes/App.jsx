@@ -20,6 +20,8 @@ import Analiticas from './Analiticas';
 import ProductosAdministrador from './ProductosAdministrador';
 import UsuariosAdministrador from './UsuariosAdministrador';
 import EmpresasAdministrador from './EmpresasAdministrador';
+import Compra from './Compra';
+import Ayuda from './Ayuda';
 
 const router = createBrowserRouter([
   {
@@ -104,6 +106,14 @@ const router = createBrowserRouter([
             element: <EmpresasAdministrador />,
           },
         ],
+      },
+      {
+        path: 'compra',
+        element: <Compra />,
+      },
+      {
+        path: 'ayuda',
+        element: <Ayuda />,
       },
     ],
   },

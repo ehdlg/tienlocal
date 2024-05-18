@@ -20,7 +20,6 @@ function Footer() {
           <li>
             <Link to={'ayuda'}>Ayuda</Link>
           </li>
-          <li>Redes sociales</li>
         </ul>
       </div>
 

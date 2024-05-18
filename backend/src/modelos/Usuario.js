@@ -13,7 +13,7 @@ export default class Usuario extends Login {
    * @returns {Promise<Object[]>} Una promesa que se resuelve con un arreglo de objetos representando las compras del usuario.
    */
   static async obtenerComprasUsuario(idUsuario) {
-    const consulta = 'SELECT id, fecha FROM compras WHERE id_usuario = ?';
+    const consulta = 'SELECT id, fecha FROM compras WHERE id_usuario = ? ORDER BY fecha DESC';
 
     try {
       const [compras] = await this.db.execute(consulta, [idUsuario]);

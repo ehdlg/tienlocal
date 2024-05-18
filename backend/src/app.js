@@ -5,13 +5,14 @@ import { manejadorErrores, noEncontrado } from './middlewares/index.js';
 import 'dotenv/config';
 
 const app = express();
+let server;
 const { PORT } = process.env;
 
 async function main() {
   try {
     comprobarConexion();
 
-    app.listen(process.env.PORT, () => {
+    server = app.listen(process.env.PORT, () => {
       console.log(`Escuchando en: http://localhost:${PORT}`);
     });
   } catch (error) {
@@ -28,3 +29,7 @@ app.use(noEncontrado);
 app.use(manejadorErrores);
 
 main();
+
+export default app;
+
+export { server };

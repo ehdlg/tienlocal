@@ -117,7 +117,7 @@
   background-color: #d70000;
 }
 
-.botonVaciar.escondido {
+.escondido {
   opacity: 0;
 }
 
@@ -165,5 +165,43 @@
 .acciones {
   display: flex;
   justify-content: space-around;
+
   margin-top: 2rem;
+
+  transition: 0.3s ease-in;
+}
+
+.pasarelaPago {
+  padding: 20px;
+}
+
+.contenido {
+  margin-bottom: 20px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.total h3 {
+  margin: 0;
+}
+
+.total p {
+  font-weight: bold;
+}
+
+.comprar {
+  display: flex;
+  justify-items: center;
+
+  margin-top: 2rem;
+}
+
+.botonComprar {
+  padding: 1rem;
+  margin-inline: auto;
 }

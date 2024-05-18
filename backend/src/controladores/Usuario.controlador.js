@@ -76,7 +76,7 @@ export default class UsuarioControlador {
 
     try {
       if (Object.keys(datosActualizacion).length === 0) {
-        throw new Error('No se han recibido datos para actualizar');
+        throw new HTTPError({ mensaje: 'No se han recibido datos para actualizar', estado: 400 });
       }
 
       const usuarioActualizado = await Usuario.actualizar(id, datosActualizacion);

@@ -1,15 +1,12 @@
 @import './variables.css';
-
 .wrapper {
-  background-color: #fff;
-  border: 1px solid var(--color-primario);
-  border-radius: 10px;
+  padding: 20px;
 
-  width: min(100% - 3rem, 1000px);
+  background-color: #f9f9f9;
 
-  padding: 2rem;
+  border-radius: 8px;
 
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .wrapper h1 {
@@ -19,7 +16,8 @@
 
 .wrapper p {
   font-size: 1.1rem;
-  line-height: 1.6;
+
+  line-height: 2;
 }
 
 .wrapper p:last-child {
