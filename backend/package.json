@@ -5,7 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "test",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --maxWorkers=1 --silent",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --maxWorkers=1 --silent --watch",
     "start": "node --watch ./src/app.js"
   },
   "author": "Enrique Hidalgo Pérez",
@@ -17,5 +18,9 @@
     "express-validator": "^7.0.1",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.4"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
