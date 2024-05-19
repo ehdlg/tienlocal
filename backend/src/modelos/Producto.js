@@ -81,6 +81,36 @@ export default class Producto extends Base {
     // Construcción de la consulta de acuerdo a los filtros.
     // Similar al método obtenerTodosFiltrado pero sin limitar o desplazar resultados.
 
+    // Filtrado por nombre.
+    if (null != filtros.nombre) {
+      consulta += ' AND nombre LIKE ?';
+      parametros.push(`%${filtros.nombre}%`);
+    }
+
+    // Filtrado por precio mínimo.
+    if (null != filtros.precioMinimo) {
+      consulta += ' AND precio >= ?';
+      parametros.push(filtros.precioMinimo);
+    }
+
+    // Filtrado por precio máximo.
+    if (null != filtros.precioMaximo) {
+      consulta += ' AND precio <= ?';
+      parametros.push(filtros.precioMaximo);
+    }
+
+    // Filtrado por categoría.
+    if (null != filtros.categoria) {
+      consulta += ' AND id_categoria = ?';
+      parametros.push(filtros.categoria);
+    }
+
+    // Filtrado por empresa.
+    if (null != filtros.empresa) {
+      consulta += ' AND id_empresa = ?';
+      parametros.push(filtros.empresa);
+    }
+
     try {
       const [cantidad] = await this.db.execute(consulta, parametros);
       return cantidad; // Devuelve la cantidad de productos filtrados.
