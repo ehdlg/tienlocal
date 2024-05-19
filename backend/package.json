@@ -5,8 +5,8 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest --maxWorkers=1 --silent",
-    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --maxWorkers=1 --silent --watch",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --maxWorkers=1 --silent --verbose",
+    "test:watch": "node --experimental-vm-modules node_modules/.bin/jest --maxWorkers=1 --silent --watch --verbose",
     "start": "node --watch ./src/app.js"
   },
   "author": "Enrique Hidalgo Pérez",
