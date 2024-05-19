@@ -73,7 +73,7 @@ function Registro() {
         return;
       }
 
-      toast.success('Usuario creado correctamente'); // Muestra un mensaje de éxito
+      toast.success('Registrado correctamente'); // Muestra un mensaje de éxito
 
       setTimeout(() => {
         window.location.href = '/login'; // Redirige al usuario a la página de inicio de sesión después de 1 segundo
