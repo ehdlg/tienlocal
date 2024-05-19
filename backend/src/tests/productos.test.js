@@ -38,7 +38,7 @@ describe('/api/productos', () => {
      */
     test('dada una petición GET a /api/productos, debería devolver un array de productos', async () => {
       const respuesta = await request(app).get('/api/productos');
-
+      //Se comprueba que el body de la respuesta es un array con Array.isArray()
       expect(Array.isArray(respuesta.body)).toBe(true);
     });
 
@@ -58,6 +58,7 @@ describe('/api/productos', () => {
       const respuesta = await request(app).get('/api/productos/9');
 
       expect(respuesta.status).toBe(200);
+      //Se comprueba que el body de la repuesta tenga el atributo "id", atributo que tienen todos los productos obligatoriamente
       expect(respuesta.body).toHaveProperty('id');
     });
 
