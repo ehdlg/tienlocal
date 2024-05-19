@@ -12,7 +12,7 @@ function Ayuda() {
         <p>
           En nuestra tienda, puedes ver los productos de diferentes empresas locales. Explora la variedad y encuentra lo
           que necesitas. Puedes ver todos los productos de las diferentes empresas y filtrarlos, así como añadirlos al
-          carrito para su compra. Puedes ver los productos{' '}
+          carrito para su compra si has iniciado sesión como usuario. Puedes ver los productos{' '}
           <Link to={'/productos'} className={estilos.enlace}>
             aquí
           </Link>
@@ -26,12 +26,13 @@ function Ayuda() {
       </div>
       <div className={estilos.seccion}>
         <h3>Usuarios</h3>
-        <p>Si eres usuario, puedes comprar productos y ver tus compras anteriores en tu perfil.</p>{' '}
+        <p>
+          Si eres usuario, puedes añadir productos al carrito, comprarlos, modificar tu perfil y ver tus compras.
+        </p>{' '}
       </div>
       <div className={estilos.seccion}>
         <h3>Empresas</h3>
         <p>
-          {' '}
           Si eres empresa, puedes crear productos y ponerlos a la venta. También puedes modificarlos desde la página de
           tu perfil.
         </p>

@@ -54,6 +54,11 @@ export const ELEMENTOS_NAV = [
     url: '/sobre-nosotros',
     id: crypto.randomUUID(),
   },
+  {
+    nombre: 'Ayuda',
+    url: '/ayuda',
+    id: crypto.randomUUID(),
+  },
 ];
 
 /**
