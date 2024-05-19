@@ -1,5 +1,6 @@
 import express from 'express';
 import rutaApi from './rutas/api.js';
+import cors from 'cors';
 import { comprobarConexion } from './db/config.js';
 import { manejadorErrores, noEncontrado } from './middlewares/index.js';
 import 'dotenv/config';
@@ -32,6 +33,8 @@ async function main() {
     console.error(error);
   }
 }
+
+app.use(cors());
 
 // Middleware para analizar el cuerpo de las solicitudes en formato JSON
 app.use(express.json());
