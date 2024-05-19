@@ -3,6 +3,15 @@ import { TrashIcon } from '@heroicons/react/24/outline'; // Importa TrashIcon de
 import estilos from '../estilos/Perfil.module.css'; // Importa los estilos del componente Tabla
 
 function Tabla({ datos, children, eliminar, esProducto = false }) {
+  //Si no hay datos o hay algun error al recibir los datos, se muestra un un mensaje informado que no hay nada que mostrar
+  if (null == datos || datos.length == 0) {
+    return (
+      <div className={estilos.tabla}>
+        <h4>No hay nada que mostrar</h4>
+        {children}
+      </div>
+    );
+  }
   // Define el componente Tabla
   const encabezados = Object.keys(datos[0]); // Obtiene los encabezados de los datos
 

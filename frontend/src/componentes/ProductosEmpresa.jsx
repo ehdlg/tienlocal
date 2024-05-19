@@ -71,6 +71,7 @@ function ProductosEmpresa() {
       stock: producto.stock,
     };
   });
+  console.log(mostrarProductos);
 
   return (
     <>
