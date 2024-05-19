@@ -90,6 +90,15 @@ CREATE TABLE valoraciones (
 );
 
 
+-- Crear usuario 'tienlocal' si no existe
+CREATE USER IF NOT EXISTS 'tienlocal'@'localhost' IDENTIFIED BY 'tienlocal';
+
+-- Otorgar todos los privilegios en la base de datos 'tienlocal' al usuario 'tienlocal'
+GRANT ALL PRIVILEGES ON tienlocal.* TO 'tienlocal'@'localhost';
+
+-- Aplicar los cambios de permisos
+FLUSH PRIVILEGES;
+
 
 
 
