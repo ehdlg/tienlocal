@@ -65,6 +65,7 @@ function ProductosEmpresa() {
     // Mapea los productos para mostrarlos en la tabla
     return {
       // Devuelve un objeto con los datos del producto
+      id: producto.id,
       nombre: producto.nombre,
       precio: producto.precio,
       stock: producto.stock,
@@ -75,7 +76,7 @@ function ProductosEmpresa() {
     <>
       {' '}
       {/* Fragmento para envolver el componente Tabla */}
-      <Tabla productos={mostrarProductos} eliminarProducto={eliminarProducto}>
+      <Tabla datos={mostrarProductos} eliminar={eliminarProducto} esProducto={true}>
         {' '}
         {/* Renderiza el componente Tabla */}
         <Link to={'/productos/nuevo'}>
