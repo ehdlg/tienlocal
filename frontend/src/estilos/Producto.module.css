@@ -1,10 +1,12 @@
 @import './variables.css';
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  justify-items: center;
+  align-content: space-between;
+
+  height: 350px;
 
   background-color: #fff;
 
@@ -29,6 +31,8 @@
 .imagen {
   display: flex;
   place-content: center;
+
+  height: 100%;
 }
 
 .imagen img {
@@ -44,6 +48,8 @@
 .infoProducto {
   display: flex;
   flex-direction: column;
+
+  justify-content: space-around;
 
   width: 80%;
 
