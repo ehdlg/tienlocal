@@ -8,7 +8,7 @@ import bcrypt from 'bcrypt';
  * @param {string} email - El email a comprobar.
  * @param {object} param1 - Un objeto con la solicitud (req) incluida.
  * @throws {Error} - Si el email ya existe en la base de datos.
- * @returns {boolean} - Retorna true si el email es el mismo que el verificado en el token.
+ * @returns {boolean} - Devulve true si el email es el mismo que el verificado en el token.
  */
 export async function comprobarEmail(email, { req }) {
   if (null != req.tokenVerificado && null != req.tokenVerificado.email && email == req.tokenVerificado.email) {

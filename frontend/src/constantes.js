@@ -1,11 +1,31 @@
+/**
+ * URL de la API utilizada para realizar solicitudes de datos.
+ * @type {string}
+ */
 export const API_URL = import.meta.env.VITE_API_URL;
 
+/**
+ * Límite de productos por página.
+ * @type {number}
+ */
 export const LIMITE_PRODUCTOS = 16;
 
+/**
+ * Límite predeterminado para paginación.
+ * @type {number}
+ */
 export const LIMITE_DEFECTO = 500;
 
+/**
+ * Desplazamiento predeterminado para paginación.
+ * @type {number}
+ */
 export const OFFSET_DEFECTO = 0;
 
+/**
+ * Filtros predeterminados para la búsqueda de productos.
+ * @type {object}
+ */
 export const FILTROS_DEFECTO = {
   precioMinimo: 0,
   precioMaximo: 0,
@@ -14,6 +34,10 @@ export const FILTROS_DEFECTO = {
   empresa: 0,
 };
 
+/**
+ * Elementos de navegación.
+ * @type {Array<Object>}
+ */
 export const ELEMENTOS_NAV = [
   {
     nombre: 'Productos',
@@ -32,6 +56,10 @@ export const ELEMENTOS_NAV = [
   },
 ];
 
+/**
+ * Elementos de menú desplegable para usuarios logueados.
+ * @type {Array<Object>}
+ */
 export const ELEMENTOS_SUBMENU_LOGEADO = [
   {
     nombre: 'Perfil',
@@ -45,6 +73,10 @@ export const ELEMENTOS_SUBMENU_LOGEADO = [
   },
 ];
 
+/**
+ * Elementos de menú desplegable para usuarios no logueados.
+ * @type {Array<Object>}
+ */
 export const ELEMENTOS_SUBMENU_NO_LOGEADO = [
   {
     nombre: 'Iniciar sesión',
@@ -58,19 +90,35 @@ export const ELEMENTOS_SUBMENU_NO_LOGEADO = [
   },
 ];
 
+/**
+ * Expresión regular para validar contraseñas.
+ * @type {RegExp}
+ */
 export const regexContrasena = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}/;
 
+/**
+ * Tipos de usuario.
+ * @type {Object}
+ */
 export const TIPOS_USUARIO = {
   usuario: 'Usuario',
   empresa: 'Empresa',
   administrador: 'Administrador',
 };
 
+/**
+ * Tipos de edición de usuario.
+ * @type {Object}
+ */
 export const TIPO_EDICION = {
   INFO: 'info',
   CONTRASENA: 'contrasena',
 };
 
+/**
+ * Campos de entrada para usuarios.
+ * @type {Array<Object>}
+ */
 export const USUARIO_INPUTS = [
   {
     type: 'text',
@@ -104,6 +152,10 @@ export const USUARIO_INPUTS = [
   },
 ];
 
+/**
+ * Campos de entrada para empresas.
+ * @type {Array<Object>}
+ */
 export const EMPRESA_INPUTS = [
   {
     type: 'text',
@@ -143,6 +195,10 @@ export const EMPRESA_INPUTS = [
   },
 ];
 
+/**
+ * Campos de entrada para iniciar sesión.
+ * @type {Array<Object>}
+ */
 export const LOGIN_INPUTS = [
   {
     type: 'email',
@@ -158,6 +214,10 @@ export const LOGIN_INPUTS = [
   },
 ];
 
+/**
+ * Campos de entrada para editar contraseña.
+ * @type {Array<Object>}
+ */
 export const INPUT_EDITAR_CONTRASENA = [
   {
     name: 'contrasenaActual',
@@ -179,6 +239,10 @@ export const INPUT_EDITAR_CONTRASENA = [
   },
 ];
 
+/**
+ * Campos de entrada para un nuevo producto.
+ * @type {Array<Object>}
+ */
 export const INPUTS_NUEVO_PRODUCTO = [
   {
     name: 'nombre',
@@ -216,6 +280,10 @@ export const INPUTS_NUEVO_PRODUCTO = [
   },
 ];
 
+/**
+ * Campos de entrada para editar un producto existente.
+ * @type {Array<Object>}
+ */
 export const INPUTS_EDITAR_PRODUCTO = INPUTS_NUEVO_PRODUCTO.map((input) => {
   return {
     ...input,

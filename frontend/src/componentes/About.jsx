@@ -1,12 +1,16 @@
 import estilos from '../estilos/About.module.css';
 
+/**
+ * Componente funcional que muestra información acerca de la plataforma.
+ * @returns {JSX.Element} Componente de React que renderiza la información sobre la plataforma.
+ */
 function About() {
   return (
     <div className={estilos.wrapper}>
       <h1>Acerca de</h1>
       <p>
-        Bienvenido a a TienLocal, una plataforma diseñada para acercar a usuarios y empresas locales de una manera fácil
-        y efectiva.
+        Bienvenido a TienLocal, una plataforma diseñada para acercar a usuarios y empresas locales de una manera fácil y
+        efectiva.
       </p>
       <p>
         Nuestro objetivo es promover la economía y el comercio local al ofrecer una tienda de venta online donde las

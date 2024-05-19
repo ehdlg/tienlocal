@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom';
-import estilos from '../estilos/Ayuda.module.css';
+import { Link } from 'react-router-dom'; // Importa Link desde react-router-dom
+import estilos from '../estilos/Ayuda.module.css'; // Importa los estilos del componente Ayuda
 
 function Ayuda() {
   return (
+    // Renderiza el contenido de Ayuda
     <div className={estilos.wrapper}>
+      {/* Contenedor principal */}
       <h2>¿Cómo funciona TienLocal?</h2>
       <div className={estilos.seccion}>
         <h3>Explora Productos</h3>
@@ -24,13 +26,14 @@ function Ayuda() {
       </div>
       <div className={estilos.seccion}>
         <h3>Usuarios</h3>
-        <p>Si eres usuario, puedes comprar productos y ver tus compras anteriores en tu perfil.</p>
+        <p>Si eres usuario, puedes comprar productos y ver tus compras anteriores en tu perfil.</p>{' '}
       </div>
       <div className={estilos.seccion}>
         <h3>Empresas</h3>
         <p>
-          Si eres empresa, puedes crear productos y ponerlos a la venta. También puedes modificarlos desde la URL{' '}
-          <code>/perfil</code>.
+          {' '}
+          Si eres empresa, puedes crear productos y ponerlos a la venta. También puedes modificarlos desde la página de
+          tu perfil.
         </p>
       </div>
       <div className={estilos.seccion}>
@@ -44,4 +47,4 @@ function Ayuda() {
   );
 }
 
-export default Ayuda;
+export default Ayuda; // Exporta el componente Ayuda
