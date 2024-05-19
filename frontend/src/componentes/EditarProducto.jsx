@@ -79,10 +79,12 @@ function EditarProducto() {
   if (errorProducto) return <h1>Error: {errorProducto}</h1>;
 
   // Determina si el usuario actual es el propietario del producto o un administrador
+
+  console.log(producto['id_empresa'] == login.id);
   const esPropietario = (sesionIniciada && !esUsuario && producto['id_empresa'] == login.id) || esAdmin;
 
   // Si el usuario no es el propietario del producto o un administrador, muestra un mensaje y redirige
-  if (!esPropietario || !esAdmin) {
+  if (!esPropietario) {
     toast.info('No tienes permisos para editar este producto');
     return <Navigate to={'/perfil'} />;
   }
