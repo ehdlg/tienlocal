@@ -102,6 +102,6 @@ export const actualizarProductoReglas = (() => {
 
     body('imagen').optional().isURL().withMessage('La imagen debe ser una URL'),
 
-    body('categoria_id').optional().isInt({ min: 1 }).withMessage('ID de categoría no válido').custom(existeCategoria),
+    body('id_categoria').optional().isInt({ min: 1 }).withMessage('ID de categoría no válido').custom(existeCategoria),
   ];
 })();
